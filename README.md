@@ -9,8 +9,7 @@ The directory structure  consists of various documents of the project.
  - *MinutesOfMeeting:*For storing meeting of minutes.
  - *Reports:* All the project reports.It has the sub folders
     -   *Deliverable-1:* 
-    -  *risk management:*
-- *Source:*
+ - *Source:*
 The directory consists of all the implementation.
 
 #Team Members
