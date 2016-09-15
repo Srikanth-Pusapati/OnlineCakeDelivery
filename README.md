@@ -10,6 +10,8 @@ The directory structure  consists of various documents of the project.
  - *Reports:* All the project reports.It has the sub folders
     -   *Deliverable-1:* 
  - *Source:*
+  - *Code:*
+  - *resource*
 The directory consists of all the implementation.
 
 #Team Members
