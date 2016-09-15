@@ -1,0 +1,4 @@
+Please find the Deliverable 1 documents at:
+1.Project Report: OnlineCakeDelivery->Documents->Reports->Deliverable1->Report.docx (URL -https://github.com/srikanthpusapatiUnt/OnlineCakeDelivery/tree/master/Documents/Reports/Deliverable1).
+2.Meeting Minutes(Included in Report also) : OnlineCakeDelivery->Documents->MinutesOfMeeting->minutes of meeting.docx (URL - https://github.com/srikanthpusapatiUnt/OnlineCakeDelivery/tree/master/Documents/MinutesOfMeeting).
+
