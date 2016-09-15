@@ -8,7 +8,7 @@ The directory structure  consists of various documents of the project.
  - *MinutesOfMeeting:*For storing meeting of minutes.
  - *Reports:* All the project reports.It has the sub folders
     -   *Deliverable-1:* 
-  - *UML Documents* 
+  - *UML Diagrams* 
  - *Source:*
   - *Code:*
     -  *src*
