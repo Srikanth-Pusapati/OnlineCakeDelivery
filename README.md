@@ -5,12 +5,13 @@
 #project structure:
 - *Documents:*
 The directory structure  consists of various documents of the project.
- - *Backup:* For storing the documents.
  - *MinutesOfMeeting:*For storing meeting of minutes.
  - *Reports:* All the project reports.It has the sub folders
     -   *Deliverable-1:* 
+  - *UML Documents* 
  - *Source:*
   - *Code:*
+    -  *src*
   - *resource*
 The directory consists of all the implementation.
 
