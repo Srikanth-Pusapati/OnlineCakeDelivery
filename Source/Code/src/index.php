@@ -47,8 +47,6 @@
 	<script type="text/javascript" src="js/jquery.simpleLens.js"></script>
 	<!-- slick slider -->
 	<script type="text/javascript" src="js/slick.js"></script>
-	<!-- Price picker slider -->
-	<script type="text/javascript" src="js/nouislider.js"></script>
 	<!-- Custom js -->
 	<script src="js/custom.js"></script>
 
@@ -66,69 +64,9 @@
 	<!-- END SCROLL TOP BUTTON -->
 
 
-	<!-- Start header section -->
-	<section>
-		<header id="aa-header">
-			<!-- start header top  -->
-			<div class="aa-header-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="aa-header-top-area">
-								<!-- start header top left -->
-								<div class="aa-header-top-left">
-
-									<!-- start cellphone -->
-									<div class="cellphone hidden-xs">
-										<p>
-											<span class="fa fa-phone"></span>984-802-2338
-										</p>
-									</div>
-									<!-- / cellphone -->
-								</div>
-								<!-- / header top left -->
-								<div class="aa-header-top-right">
-									<ul class="aa-head-top-nav-right">
-										<li><a href="#">My Account</a></li>
-										<li class="hidden-xs"><a href="#">Registration</a></li>
-
-										<li class="hidden-xs"><a href="#">Checkout</a></li>
-
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- / header top  -->
-
-			<!-- start header bottom  -->
-			<div class="aa-header-bottom">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="aa-header-bottom-area">
-								<!-- logo  -->
-								<div class="aa-logo">
-									<!-- Text based logo -->
-									<a href="index.html"> <span class="fa fa-shopping-cart">
-									</span>
-										<p>
-											Online <strong>Cake Delivery</strong> <span>Your choice</span>
-										</p>
-									</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- / header bottom  -->
-		</header>
-
-	</section>
+	<!-- Include Header-->
+	<?php include'header.php' ?>
+	
 	<!-- / menu -->
 	<!-- Start slider -->
 	<section id="aa-slider">
@@ -301,50 +239,8 @@
 				</li>
 			</ul>
 			<!-- footer -->
-			<footer id="aa-footer">
-				<!-- footer bottom -->
-				<div class="aa-footer-top">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="aa-footer-top-area">
-									<div class="row">
-										<div class="col-md-3 col-sm-6">
-											<div class="aa-footer-widget"></div>
-										</div>
-										<div class="col-md-3 col-sm-6">
-											<div class="aa-footer-widget">
-												<div class="aa-footer-widget"></div>
-											</div>
-										</div>
-
-										<div class="col-md-3 col-sm-6">
-											<div class="aa-footer-widget">
-												<div class="aa-footer-widget">
-													<h3>Contact Us</h3>
-													<address>
-														<p>911 Bernard, Denton TX 76201, USA</p>
-														<p>
-															<span class="fa fa-phone"></span>+1 984-802-2338
-														</p>
-														<p>
-															<span class="fa fa-envelope"></span>onlinecakedelivery@gmail.com
-														</p>
-													</address>
-
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</footer>
+			<?php include'footer.php'?>
 		</div>
-	</div>
-
-	
+	</div>	
 </body>
 </html>
