@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2016 at 07:56 PM
+-- Generation Time: Nov 13, 2016 at 07:42 PM
 -- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -45,6 +45,7 @@ CREATE TABLE `customer_order` (
   `orderid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `cakeid` int(11) NOT NULL,
+  `deliverer_id` int(11) NOT NULL,
   `date_of_delivery` date NOT NULL,
   `time_of_delivery` time NOT NULL,
   `order_status` varchar(20) NOT NULL,
@@ -142,7 +143,8 @@ ALTER TABLE `cake_details`
 ALTER TABLE `customer_order`
   ADD PRIMARY KEY (`orderid`),
   ADD KEY `order_ibfk_1` (`userid`),
-  ADD KEY `order_ibfk_2` (`cakeid`);
+  ADD KEY `order_ibfk_2` (`cakeid`),
+  ADD KEY `customer_order_ibfk_3` (`deliverer_id`);
 
 --
 -- Indexes for table `login_admin`
@@ -199,7 +201,8 @@ ALTER TABLE `registration`
 --
 ALTER TABLE `customer_order`
   ADD CONSTRAINT `customer_order_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `registration` (`userid`),
-  ADD CONSTRAINT `customer_order_ibfk_2` FOREIGN KEY (`cakeid`) REFERENCES `cake_details` (`cakeid`);
+  ADD CONSTRAINT `customer_order_ibfk_2` FOREIGN KEY (`cakeid`) REFERENCES `cake_details` (`cakeid`),
+  ADD CONSTRAINT `customer_order_ibfk_3` FOREIGN KEY (`deliverer_id`) REFERENCES `registration` (`userid`);
 
 --
 -- Constraints for table `login_admin`
