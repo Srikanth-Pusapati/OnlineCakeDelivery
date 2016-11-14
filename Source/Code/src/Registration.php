@@ -25,7 +25,7 @@
 <tr><td>cellNumber:</td>
 <td> <input type="text" name="mobile"><span id="numloc"></span><br/></td></tr>  
 <tr><td>user_type:</td>
-<td><select name="usertype">
+<td><select name="type">
   <option value="admin">Admin</option>
   <option value="customer">Customer</option>
   <option value="deliverer">Deliverer</option>
