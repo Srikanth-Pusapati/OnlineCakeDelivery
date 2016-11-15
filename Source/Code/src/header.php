@@ -75,7 +75,7 @@
 											<li class="hidden-xs"><a href="logout.php">Logout</a></li>
 											<?php }else{ ?>
 											<li><a href="login.php">My Account</a></li>
-											<li class="hidden-xs"><a href="#">Registration</a></li>
+											<li class="hidden-xs"><a href="Registration.php">Registration</a></li>
 
 											<li class="hidden-xs"><a href="#">Checkout</a></li>
 
