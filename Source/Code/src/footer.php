@@ -6,10 +6,10 @@
 		<address>
 			<p>911 Bernard, Denton TX 76201, USA</p>
 			<p>
-				<span class="fa fa-phone"></span>+1 984-802-2338
+				<span class="fa fa-phone"></span> +1 984-802-2338
 			</p>
 			<p>
-				<span class="fa fa-envelope"></span>onlinecakedelivery@gmail.com
+				<span class="fa fa-envelope"></span> onlinecakedelivery@gmail.com
 			</p>
 		</address>
 
