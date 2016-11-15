@@ -89,7 +89,7 @@ return $con;
 								$cakeId = $row["cakeid"];
 								$cakeName = $row["cake_name"];
 								$cakeDetails = $row["cake_details"];
-								$cakeIngredients = $row["cake_ingrediants"];
+								$cakeIngredients = $row["cake_ingredients"];
 								$cakeCost = $row["cost_item"];
 								$cakeImage = $row["cake_image_path"];
 						?>
