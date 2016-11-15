@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2016 at 07:42 PM
+-- Generation Time: Nov 14, 2016 at 06:16 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -35,6 +35,13 @@ CREATE TABLE `cake_details` (
   `cake_image_path` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `cake_details`
+--
+
+/*INSERT INTO `cake_details` (`cakeid`, `cake_name`, `cake_details`, `cake_ingrediants`, `cost_item`, `cake_image_path`) VALUES
+(1, 'Butterscotch', '1kg', 'kaaju', 15, '');*/
+
 -- --------------------------------------------------------
 
 --
@@ -55,6 +62,13 @@ CREATE TABLE `customer_order` (
   `phone_no` varchar(10) NOT NULL,
   `payment_status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer_order`
+--
+
+/* INSERT INTO `customer_order` (`orderid`, `userid`, `cakeid`, `deliverer_id`, `date_of_delivery`, `time_of_delivery`, `order_status`, `order_mailing_address`, `city`, `zip`, `phone_no`, `payment_status`) VALUES 
+(2, 1, 1, 2, '2016-11-14', '02:10:10', 'confirmed', '911 bernard', 'Denton', '76201', '1234560789', 'pending'); */
 
 -- --------------------------------------------------------
 
@@ -80,6 +94,13 @@ CREATE TABLE `login_customer` (
   `email` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `login_customer`
+--
+
+/*INSERT INTO `login_customer` (`userid`, `password`, `email`) VALUES
+(1, '1234', 'dhoni@gmail.com');*/
+
 -- --------------------------------------------------------
 
 --
@@ -91,6 +112,13 @@ CREATE TABLE `login_deliverer` (
   `password` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login_deliverer`
+--
+
+/*INSERT INTO `login_deliverer` (`userid`, `password`, `email`) VALUES
+(2, '1234', 'raina@gmail.com');*/
 
 -- --------------------------------------------------------
 
@@ -107,6 +135,14 @@ CREATE TABLE `registration` (
   `mobile_number` int(10) NOT NULL,
   `user_type` varchar(20) NOT NULL DEFAULT 'customer'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `registration`
+--
+
+/*INSERT INTO `registration` (`userid`, `user_name`, `password`, `email`, `address`, `mobile_number`, `user_type`) VALUES
+(1, 'Dhoni', '1234', 'dhoni@gmail.com', '911 bernard', 1234567898, 'customer'),
+(2, 'Raina', '1234', 'raina@gmail.com', 'stella st', 1324567898, 'deliverer');*/
 
 --
 -- Triggers `registration`
@@ -181,17 +217,17 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `cake_details`
 --
 ALTER TABLE `cake_details`
-  MODIFY `cakeid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cakeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `customer_order`
 --
 ALTER TABLE `customer_order`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `userid` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `userid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -201,8 +237,7 @@ ALTER TABLE `registration`
 --
 ALTER TABLE `customer_order`
   ADD CONSTRAINT `customer_order_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `registration` (`userid`),
-  ADD CONSTRAINT `customer_order_ibfk_2` FOREIGN KEY (`cakeid`) REFERENCES `cake_details` (`cakeid`),
-  ADD CONSTRAINT `customer_order_ibfk_3` FOREIGN KEY (`deliverer_id`) REFERENCES `registration` (`userid`);
+  ADD CONSTRAINT `customer_order_ibfk_2` FOREIGN KEY (`cakeid`) REFERENCES `cake_details` (`cakeid`);
 
 --
 -- Constraints for table `login_admin`
