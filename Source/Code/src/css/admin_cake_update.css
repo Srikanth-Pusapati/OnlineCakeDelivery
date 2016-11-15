@@ -1,0 +1,15 @@
+#upload_button{
+		border: 2px solid green;
+			background-color: green;
+			color: white;
+			padding:5px 20px;
+			margin: 16px;
+}
+tr td{
+	padding:5px;
+	margin:5px 10px;
+}
+table {
+	padding:10px;
+	margin: auto;
+}
