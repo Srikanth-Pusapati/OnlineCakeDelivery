@@ -77,8 +77,6 @@
 											<li><a href="login.php">My Account</a></li>
 											<li class="hidden-xs"><a href="Registration.php">Registration</a></li>
 
-											<li class="hidden-xs"><a href="#">Checkout</a></li>
-
 											<?php } ?>
 										</ul>
 									</div>
@@ -111,7 +109,7 @@ function redirectHref($userType){
 	}else if($userType =='customer'){
 		$redirectpage="index_Customer_logged.php";
 	}else if($userType == 'deliverer'){
-		$redirectpage = "customerOrders.php";
+		$redirectpage = "deliverer_customerOrders.php";
 	}
 	return $redirectpage;
 } ?>"> <span class="fa fa-shopping-cart">

@@ -103,7 +103,7 @@ function redirectBrowser($userType){
 	}else if($userType =='customer'){
 		$redirectpage="Location: index_Customer_logged.php";
 	}else if($userType == 'deliverer'){
-		$redirectpage = "Location: customerOrders.php";
+		$redirectpage = "Location: deliverer_customerOrders.php";
 	}
 	return $redirectpage;
 }

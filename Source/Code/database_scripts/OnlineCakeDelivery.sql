@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2016 at 06:24 AM
+-- Generation Time: Nov 15, 2016 at 11:58 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `cake_details` (
   `cakeid` int(11) NOT NULL,
   `cake_name` varchar(20) NOT NULL,
-  `cake_details` varchar(20),
-  `cake_ingredients` varchar(20),
+  `cake_details` varchar(40) DEFAULT NULL,
+  `cake_ingredients` varchar(40) DEFAULT NULL,
   `cost_item` double NOT NULL,
   `cake_image_path` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
 
@@ -49,12 +49,12 @@ CREATE TABLE `customer_order` (
   `date_of_delivery` date NOT NULL,
   `time_of_delivery` time NOT NULL,
   `order_status` varchar(20) NOT NULL,
-  `order_mailing_address` varchar(20) NOT NULL,
+  `order_mailing_address` varchar(40) NOT NULL,
   `city` varchar(20) NOT NULL,
   `zip` varchar(5) NOT NULL,
   `phone_no` varchar(10) NOT NULL,
   `payment_status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
 
@@ -65,8 +65,8 @@ CREATE TABLE `customer_order` (
 CREATE TABLE `login_admin` (
   `userid` int(11) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `email` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
 
@@ -77,8 +77,8 @@ CREATE TABLE `login_admin` (
 CREATE TABLE `login_customer` (
   `userid` int(11) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `email` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
 
@@ -89,8 +89,8 @@ CREATE TABLE `login_customer` (
 CREATE TABLE `login_deliverer` (
   `userid` int(11) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `email` varchar(40) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
 
@@ -99,14 +99,14 @@ CREATE TABLE `login_deliverer` (
 --
 
 CREATE TABLE `registration` (
-  `userid` int(20) NOT NULL,
-  `user_name` varchar(20) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `user_name` varchar(40) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
+  `email` varchar(40) NOT NULL,
   `address` varchar(30) NOT NULL,
   `mobile_number` varchar(10) NOT NULL,
-  `user_type` varchar(20) NOT NULL DEFAULT 'customer'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `user_type` varchar(15) NOT NULL DEFAULT 'customer'
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 --
 -- Triggers `registration`
@@ -143,7 +143,8 @@ ALTER TABLE `cake_details`
 ALTER TABLE `customer_order`
   ADD PRIMARY KEY (`orderid`),
   ADD KEY `order_ibfk_1` (`userid`),
-  ADD KEY `order_ibfk_2` (`cakeid`);
+  ADD KEY `order_ibfk_2` (`cakeid`),
+  ADD KEY `customer_order_ibfk_3` (`deliverer_id`);
 
 --
 -- Indexes for table `login_admin`
@@ -190,7 +191,7 @@ ALTER TABLE `customer_order`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `userid` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
