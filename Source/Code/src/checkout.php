@@ -2,7 +2,6 @@
 <html>
 <body>
 <?php include"header.php";
-session_start();
 if( isset($_SESSION['Error']) )
 {
         echo $_SESSION['Error'];
@@ -12,6 +11,10 @@ if( isset($_SESSION['Error']) )
 }
  ?>
 <form class="form-horizontal" role="form" method="post" action="buy.php">
+
+<input type="hidden" name="cakeId" value="<?php
+	echo ($_GET["cakeId"]);
+ ?>" />
  <section id="checkout">
    <div class="container">
      <div class="row">
@@ -39,7 +42,7 @@ if( isset($_SESSION['Error']) )
                               </div>   
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
-                                <input type="date" name="Date_Of_Delivery" placeholder="Date_Of_Delivery*">
+                                <input type="date" name="Date_Of_Delivery" placeholder="Date Of Delivery*">
                               </div>
 							 <div class="col-md-12">
                               <div class="aa-checkout-single-bill">
@@ -48,7 +51,7 @@ if( isset($_SESSION['Error']) )
                             </div>
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
-                                <input type="time" name="Time_Of_Delivery" placeholder="Time_Of_Delivery">
+                                <input type="time" name="Time_Of_Delivery" placeholder="Time Of Delivery">
                               </div>
                             </div>
                           </div> 
@@ -62,7 +65,7 @@ if( isset($_SESSION['Error']) )
                           <div class="row">
                             <div class="col-md-6">
                               <div class="aa-checkout-single-bill">
-                                <input type="email" name="Email_Address" placeholder="Email_Address">
+                                <input type="email" name="Email_Address" placeholder="Email Address">
                               </div>                             
                             </div>
                             <div class="col-md-6">

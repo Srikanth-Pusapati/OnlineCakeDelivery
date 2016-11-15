@@ -1,5 +1,4 @@
-
- <!Doctype html>
+<!Doctype html>
 <html>
 <?php
 include "header.php";
@@ -11,8 +10,7 @@ include "header.php";
 <body>
 
 <?php
-//$deliverer_id=_SESSION["userid"];   // getting deliverid from sesssion
-$deliverer_id=2;
+$deliverer_id=$_SESSION["userID"];   // getting deliverid from sesssion
 $servername = "localhost";
 $db_username = "root";
 $db_password = "";
@@ -31,7 +29,10 @@ if(isset($_POST["orderid"]))
 	$stmt2->bind_param("ii", $deliverer_id,$selected_orderid);
 	$stmt2->execute();
 }
-$stmt1 = $conn->prepare(" SELECT u.user_name, o.date_of_delivery, o.time_of_delivery, o.order_mailing_address, o.city, o.zip, o.phone_no, c.cake_name, c.cost_item FROM `customer_order` o JOIN `cake_details` c ON o.cakeid = c.cakeid JOIN `registration` u ON o.userid=u.userid WHERE o.order_status = 'confirmed' and o.deliverer_id=?");
+$stmt1 = $conn->prepare(" SELECT u.user_name, o.date_of_delivery, 
+o.time_of_delivery, o.order_mailing_address, o.city, o.zip, o.phone_no,
+ c.cake_name, c.cost_item FROM `customer_order` o JOIN `cake_details` c ON o.cakeid = c.cakeid 
+ JOIN `registration` u ON o.userid=u.userid WHERE o.order_status = 'confirmed' and o.deliverer_id=?");
 $stmt1->bind_param("i", $deliverer_id);
 $stmt1->execute();
 $result = $stmt1->get_result();

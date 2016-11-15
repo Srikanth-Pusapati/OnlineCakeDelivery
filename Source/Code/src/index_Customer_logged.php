@@ -95,15 +95,13 @@ return $con;
 						?>
 					<li>
 						<figure>
-							<a class="aa-product-img" name="cakeSelected" href="checkout.php">
-								<input type="hidden" name="cakeId" value="<?php echo $cakeId; ?>" />
+							<a class="aa-product-img" name="cakeSelected" href="checkout.php?cakeId=<?php echo $cakeId; ?>" >
 										<img src ="img/cakes/<?php echo $cakeImage; ?>" alt = "<?php echo $cakeName; ?>" width= "230px" height= "300px" />
 												<!-- TODO Retrive image from database <img src="img/cakes/2.jpg" alt="cartoon cake img">-->
 
 											</a>
-											<a class="aa-add-card-btn" name="cakeSelected" href="checkout.php"><span
+											<a class="aa-add-card-btn" name="cakeSelected" href="checkout.php?cakeId=<?php echo $cakeId; ?>"><span
 														class="fa fa-shopping-cart">
-													<input type="hidden" name="cakeId" value="<?php echo $cakeId; ?>" />
 														</span>Order</a>
 													<figcaption>
 														<h4 class="aa-product-title">
@@ -115,6 +113,8 @@ return $con;
 						href="#">SALE!</a></span>-->
 											</li>
 											<?php } 
+						} else{
+							echo " <li> No Cakes available. </li>" ;
 						}
 						?>
 										</ul>

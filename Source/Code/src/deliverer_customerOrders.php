@@ -1,4 +1,3 @@
-
 <!Doctype html>
 <html>
 <?php
@@ -29,9 +28,8 @@ $result = $conn->query ( $stmt1 );
 
 if ($result->num_rows > 0) {
 // output data of each row
-//print_r($result->fetch_assoc());
 ?>
-<form method ="post" action ="selectedOrder.php">	
+<form method ="post" action ="deliverer_selectedOrder.php">	
 <table>
 <tr>
 <th>Date of Delivery</th>
@@ -51,7 +49,7 @@ while ( $row = $result->fetch_assoc () ) {
 <td><?php echo $row["order_mailing_address"]." ".$row["city"]." ".$row["zip"]; ?></td>
 <td><?php echo($row["cake_name"]); ?></td>
 <td><?php echo($row["cost_item"]); ?></td>
-<td><input type="submit" name="selectcustomer_order" value ="Pick customer_order"/></td>
+<td><input type="submit" name="selectcustomer_order" value ="Pick Customer Order"/></td>
 <td><input type="hidden" name = "orderid" value="<?php echo($row["orderid"]); ?>" > </td>
 </tr>
 <?php } ?>
