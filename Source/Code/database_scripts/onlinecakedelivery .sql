@@ -52,7 +52,7 @@ CREATE TABLE `customer_order` (
   `orderid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `cakeid` int(11) NOT NULL,
-  `deliverer_id` int(11) NOT NULL,
+  `deliverer_id` int(11),
   `date_of_delivery` date NOT NULL,
   `time_of_delivery` time NOT NULL,
   `order_status` varchar(20) NOT NULL,
@@ -179,8 +179,7 @@ ALTER TABLE `cake_details`
 ALTER TABLE `customer_order`
   ADD PRIMARY KEY (`orderid`),
   ADD KEY `order_ibfk_1` (`userid`),
-  ADD KEY `order_ibfk_2` (`cakeid`),
-  ADD KEY `customer_order_ibfk_3` (`deliverer_id`);
+  ADD KEY `order_ibfk_2` (`cakeid`);
 
 --
 -- Indexes for table `login_admin`
