@@ -76,10 +76,10 @@ return $con;
 			<div class="tab-pane fade in active">
 				<ul class="aa-product-catg">
 					<!-- start single product item -->
-					
-								<?php 
+
+					<?php 
 						$con = connectToDatabase();
-						$sql = " SELECT `cakeid`, `cake_name`, `cake_details`, `cake_ingrediants`,
+						$sql = " SELECT `cakeid`, `cake_name`, `cake_details`, `cake_ingredients`,
 						`cost_item`, `cake_image_path` FROM `cake_details`";	
 						$result = $con->query( $sql);
 						if ($result->num_rows > 0) 
@@ -89,17 +89,17 @@ return $con;
 								$cakeId = $row["cakeid"];
 								$cakeName = $row["cake_name"];
 								$cakeDetails = $row["cake_details"];
-								$cakeIngrediants = $row["cake_ingrediants"];
+								$cakeIngredients = $row["cake_ingrediants"];
 								$cakeCost = $row["cost_item"];
 								$cakeImage = $row["cake_image_path"];
 						?>
-						<li>
+					<li>
 						<figure>
 							<a class="aa-product-img" name="cakeSelected" href="checkout.php">
 								<input type="hidden" name="cakeId" value="<?php echo $cakeId; ?>" />
 										<img src ="img/cakes/<?php echo $cakeImage; ?>" alt = "<?php echo $cakeName; ?>" width= "230px" height= "300px" />
 												<!-- TODO Retrive image from database <img src="img/cakes/2.jpg" alt="cartoon cake img">-->
-						
+
 											</a>
 											<a class="aa-add-card-btn" name="cakeSelected" href="checkout.php"><span
 														class="fa fa-shopping-cart">

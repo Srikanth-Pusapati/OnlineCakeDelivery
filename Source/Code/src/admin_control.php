@@ -52,14 +52,14 @@ if (isset ( $_POST ["submit"] )) {
 	}
 	$cakeName = $_POST["cakeName"];
 	$cakeDetails =  $_POST["cakeDetails"];
-	$cakeIngrediants= $_POST["cakeIngrediants"];
+	$cakeIngredients= $_POST["cakeIngredients"];
 	$cakePrice = $_POST["cakePrice"];
 	// Execute sql query to insert image data into database
 	$stmt = $conn->prepare ( "INSERT INTO `cake_details`(`cake_name`,
-				`cake_details`, `cake_ingrediants`, `cost_item`, `cake_image_path`)
+				`cake_details`, `cake_ingredients`, `cost_item`, `cake_image_path`)
 		VALUES (?,?,?,?,?);");
 	// Bind the appropriate values that have to be inserted into db
-	$stmt->bind_param ( "sssds", $cakeName, $cakeDetails, $cakeIngrediants, $cakePrice, $cakeImagePath );
+	$stmt->bind_param ( "sssds", $cakeName, $cakeDetails, $cakeIngredients, $cakePrice, $cakeImagePath );
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadOk == 0) {
 		$image_upload_error = "Sorry, your file was not uploaded.";
@@ -71,9 +71,10 @@ if (isset ( $_POST ["submit"] )) {
 			$cakeImagePath = basename ( $target_file );
 			$stmt->execute ();
 			if(isset($_SESSION["userType"])){
-			$redirectpage = redirectBrowser();
-			header($redirectpage);
-			exit();
+				echo "Sucessfully updated the cake.";
+			//$redirectpage = redirectBrowser();
+			//header($redirectpage);
+			//exit();
 			}
 			$conn->close ();
 		} else {
@@ -107,7 +108,7 @@ function redirectBrowser($userType){
 							<td>Cake Details:</td><td><input type="text" name="cakeDetails" id="cakeDetails" /></td>
 						</tr>
 						<tr>
-							<td>Cake Ingrediants:</td><td><input type="text" name="cakeIngrediants" id="cakeIngrediants" /></td>
+							<td>Cake Ingredients:</td><td><input type="text" name="cakeIngredients" id="cakeIngredients" /></td>
 						</tr>
 						<tr>
 							<td>Cake Price:</td><td><input type="text" name="cakePrice" id="cakePrice" required /></td>
