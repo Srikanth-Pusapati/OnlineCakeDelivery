@@ -25,8 +25,8 @@
 				exit();
 			}
 			else{
-				
-			$error=''; // Variable To Store Error Message
+			// Variable To Store Error Message	
+			$error=''; 
 			//Check if submit is clicked.
 			if (isset($_POST['submit'])) {
 				//checking if data entered is empty or not.

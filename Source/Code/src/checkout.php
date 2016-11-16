@@ -2,10 +2,12 @@
 <html>
 <body>
   <?php include"header.php";
+  //check for the error in session if exists
   if( isset($_SESSION['Error']) )
   {
+	//display error message
     echo $_SESSION['Error'];
-
+	//else unset it
     unset($_SESSION['Error']);
 
   }
