@@ -36,12 +36,7 @@
       5)Any suggestions?<br>
       <textarea name="comment"></textarea><br>
       <input type="submit" name="submit" value="Submit"> 
-
-
-
-      
-      
-    </form>
+	  </form>
     <?php include 'footer.php';?>
   </body>
   </html>

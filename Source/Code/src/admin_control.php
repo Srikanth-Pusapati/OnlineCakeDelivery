@@ -109,10 +109,17 @@ if (isset ( $_POST ["submit"] )) {
 			}
 		}
 	}else{
+		//Display the error message.
 		$imageUploadError ="has error please check.";
 	}
 }
 
+/**
+* redirectBrowser for updating the url the page has to redirect according to user type.
+*
+* @param userType The type of the user,i.e admin, customer, deliverer.
+* @return rediretpage The string to which the page has to be redirected.
+**/
 function redirectBrowser($userType){
 	if($userType == 'admin'){
 		$redirectpage= "Location: admin_control.php";
