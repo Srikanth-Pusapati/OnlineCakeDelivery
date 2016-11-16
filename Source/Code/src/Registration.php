@@ -2,27 +2,41 @@
 <html>
 <body>
 	<?php include 'header.php';?>
-	
 	<?php 
+	//check if the submit button of the form for uploading the customer details is clicked or not
 	if(isset($_POST["submit"])){
+    //dbhost - name of the server which is default localhost.
+    // db_user - database username, which is default root.
+    //db_pass - database password, default is empty. 
 		$dbhost = 'localhost';
 		$dbuser = 'root';
 		$dbpass = '';
+		//variable uname is initialized to data given from the form feild .
 		$uname = $_POST['uname'];
+		//variable email is initialized to data given from the form feild .
 		$email=$_POST['email'];
+		//variable address is initialized to data given from the form feild .
 		$address = $_POST['address'];
+		//variable pwd is initialized to data given from the form feild .
 		$pwd = $_POST['pwd'];
+		//variable mobile is initialized to data given from the form feild .
 		$mobile= $_POST['mobile'];
+		//variable u_type is initialized to data given from the form feild .
 		$u_type=$_POST['type'];
+		// Create connection to the database.
 		$conn = new mysqli($dbhost, $dbuser, $dbpass,'onlinecakedelivery');
+		// Check connection
 		if ($conn->connect_error) {
 			die ( "Connection failed: " . $con->connect_error );
-		}	
+		}
+         // Execute sql query to insert registartion data into database		
 		$sql =$conn->prepare ( "INSERT INTO `registration`( `user_name`, `password`, `email`, `address`, `mobile_number`, `user_type`) VALUES
 			(?,?,?,?,?,?)");
+	    // Bind the appropriate values that have to be inserted into db
 		$sql->bind_param("ssssss",$uname,$pwd,$email,$address,$mobile,$u_type);
+		//check if it executes
 		if($sql->execute ()){
-//mysql_select_db('onlinecakedelivery');
+        //mysql_select_db('onlinecakedelivery');
 			echo "registered successfully";
 			header("Location:index.php");
 
@@ -30,6 +44,7 @@
 			echo "Error occured, please retry.";
 			
 		}
+		// close connection
 		$conn ->close();
 	}
 	?>
