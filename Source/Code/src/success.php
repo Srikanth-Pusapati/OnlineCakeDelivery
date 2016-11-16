@@ -1,22 +1,14 @@
 <html>
 <body>
-<?php include 'header.php';?>
-Order Placed Success fully
-
- <h3>THANK YOU FOR SHOPPING</h3>
- <h4><a href="#">Visit Again</a></h4><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+	<?php include 'header.php';?>
+	<h2>Order Placed Success fully</h2>
 
 
 
-
-<?php include 'footer.php';?></body>
+	<h3>THANK YOU FOR SHOPPING</h3>
+	<h4>
+		<a href="#">Visit Again</a>
+	</h4>
+	<?php include 'footer.php';?>
+</body>
 </html>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2016 at 11:58 AM
+-- Generation Time: Nov 16, 2016 at 01:17 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -54,6 +54,20 @@ CREATE TABLE `customer_order` (
   `zip` varchar(5) NOT NULL,
   `phone_no` varchar(10) NOT NULL,
   `payment_status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `UI_rating` varchar(10) NOT NULL,
+  `cake_available` varchar(10) NOT NULL,
+  `suggest` varchar(10) NOT NULL,
+  `worth` varchar(10) NOT NULL,
+  `comment` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
@@ -181,17 +195,17 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `cake_details`
 --
 ALTER TABLE `cake_details`
-  MODIFY `cakeid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cakeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `customer_order`
 --
 ALTER TABLE `customer_order`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --

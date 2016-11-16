@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Online Cake Delivery</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Online Cake Delivery</title>
 
 </head>
 <body>
@@ -39,7 +39,8 @@
 							<h2 data-seq>Birth Day Cakes</h2>
 
 							<a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP
-								NOW</a>
+								NOW
+							</a>
 						</div>
 					</li>
 					<!-- single slide item -->
@@ -52,14 +53,15 @@
 							<h2 data-seq>Wedding Cakes</h2>
 
 							<a data-seq href="#" class="aa-shop-now-btn aa-secondary-btn">SHOP
-								NOW</a>
+								NOW
+							</a>
 						</div>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</section>                
-                  <!-- Tab panes -->
+	<!-- Tab panes -->
 	<div class="tab-content">
 		<div class="tab-pane fade in active">
 			<ul class="aa-product-catg">
@@ -67,49 +69,57 @@
 				<li>
 					<figure>
 						<a class="aa-product-img" href="#"><img
-							src="img/cakes/2.jpg" alt="cartoon cake img"></a>
+							src="img/cakes/2.jpg" alt="cartoon cake img">
+						</a>
 						<a class="aa-add-card-btn" href="#"><span
-							class="fa fa-shopping-cart"></span>Order</a>
+							class="fa fa-shopping-cart"></span>Order
+						</a>
 						<figcaption>
 							<h4 class="aa-product-title">
 								<a href="#">Cartoon Cake</a>
 							</h4>
 							<span class="aa-product-price">$15.50</span><span
-								class="aa-product-price"><del>$25.50</del></span>
+							class="aa-product-price"><del>$25.50</del></span>
 						</figcaption>
 					</figure> <!-- product badge --> <span class="aa-badge aa-sale"><a
-						href="#">SALE!</a></span>
+					href="#">SALE!</a></span>
 				</li>
 				<!-- start single product item -->
 				<li>
 					<figure>
 						<a class="aa-product-img" href="#"><img src="img/cakes/6.png"
-							alt="chocy"></a>
-						<a class="aa-add-card-btn" href="#"><span
-							class="fa fa-shopping-cart"></span>Order</a>
+							alt="chocy">
+						</a>
+						<a class="aa-add-card-btn" href="#">
+							<span
+							class="fa fa-shopping-cart"></span>Order
+						</a>
 						<figcaption>
 							<h4 class="aa-product-title">
 								<a href="#">Choclate strawberry Cake</a>
 							</h4>
 							<span class="aa-product-price">$25.50</span>
 						</figcaption>
-					</figure> <!-- product badge --> <span class="aa-badge aa-sold-out">
+					</figure> <!-- product badge --> 
+					<span class="aa-badge aa-sold-out">
 						<a href="#">Sold Out!</a>
-				</span>
+					</span>
 				</li>
 				<!-- start single product item -->
 				<li>
 					<figure>
 						<a class="aa-product-img" href="#"><img src="img/cakes/4.jpg"
-							alt="cake3"></a>
-						<a class="aa-add-card-btn" href="#"><span
-							class="fa fa-shopping-cart"></span>Order</a>
+							alt="cake3">
+						</a>
+						<a class="aa-add-card-btn" href="#">
+							<span class="fa fa-shopping-cart"></span>Order
+						</a>
 						<figcaption>
 							<h4 class="aa-product-title">
 								<a href="#">Horse cake</a>
 							</h4>
 							<span class="aa-product-price">$12.50</span><span
-								class="aa-product-price"><del>$20</del></span>
+							class="aa-product-price"><del>$20</del></span>
 						</figcaption>
 					</figure>
 
@@ -118,26 +128,30 @@
 				<li>
 					<figure>
 						<a class="aa-product-img" href="#"><img src="img/cakes/7.png"
-							alt="cake4"></a>
+							alt="cake4">
+						</a>
 						<a class="aa-add-card-btn" href="#"><span
-							class="fa fa-shopping-cart"></span>Order</a>
+							class="fa fa-shopping-cart"></span>Order
+						</a>
 						<figcaption>
 							<h4 class="aa-product-title">
 								<a href="#">Toy cake</a>
 							</h4>
 							<span class="aa-product-price">$5.50</span><span
-								class="aa-product-price"><del>$6.50</del></span>
+							class="aa-product-price"><del>$6.50</del></span>
 						</figcaption>
 					</figure> <!-- product badge --> <span class="aa-badge aa-hot"> <a
-						href="#">HOT!</a></span>
+					href="#">HOT!</a></span>
 				</li>
 				<!-- start single product item -->
 				<li>
 					<figure>
 						<a class="aa-product-img" href="#"><img src="img/cakes/12.png"
-							alt="cake5"></a>
+							alt="cake5">
+						</a>
 						<a class="aa-add-card-btn" href="#"><span
-							class="fa fa-shopping-cart"></span>Order</a>
+							class="fa fa-shopping-cart"></span>Order
+						</a>
 						<figcaption>
 							<h4 class="aa-product-title">
 								<a href="#">Flower Vanila Cake</a>
@@ -150,41 +164,49 @@
 				<li>
 					<figure>
 						<a class="aa-product-img" href="#"><img src="img/cakes/9.png"
-							alt="cake5"></a>
+							alt="cake5">
+						</a>
 						<a class="aa-add-card-btn" href="#"><span
-							class="fa fa-shopping-cart"></span>Order</a>
+							class="fa fa-shopping-cart"></span>Order
+						</a>
 						<figcaption>
 							<h4 class="aa-product-title">
 								<a href="#">Custom Cake</a>
 							</h4>
-							<span class="aa-product-price">$20.50</span><span
-								class="aa-product-price"><del>$25.50</del></span>
+							<span class="aa-product-price">$20.50</span>
+							<span class="aa-product-price"><del>$25.50</del>
+							</span>
 						</figcaption>
 					</figure> <!-- start single product item -->
 				</li>
 				<li>
 					<figure>
 						<a class="aa-product-img" href="#"><img src="img/cakes/12.png"
-							alt="cake6"></a>
+							alt="cake6">
+						</a>
 						<a class="aa-add-card-btn" href="#"><span
-							class="fa fa-shopping-cart"></span>Order</a>
+							class="fa fa-shopping-cart"></span>Order
+						</a>
 						<figcaption>
 							<h4 class="aa-product-title">
 								<a href="#">Wedding cake</a>
 							</h4>
-							<span class="aa-product-price">$35.50</span><span
-								class="aa-product-price"><del>$25.50</del></span>
+							<span class="aa-product-price">$35.50</span>
+							<span class="aa-product-price"><del>$25.50</del></span>
 						</figcaption>
 					</figure> <!-- product badge --> <span class="aa-badge aa-sale"><a
-						href="#">SALE!</a></span>
+					href="#">SALE!</a></span>
 				</li>
 				<!-- start single product item -->
 				<li>
 					<figure>
 						<a class="aa-product-img" href="#"><img src="img/cakes/11.png"
-							alt="cake7"></a>
-						<a class="aa-add-card-btn" href="#"><span
-							class="fa fa-shopping-cart"></span>Order</a>
+							alt="cake7">
+						</a>
+						<a class="aa-add-card-btn" href="#">
+							<span
+							class="fa fa-shopping-cart"></span>Order
+						</a>
 						<figcaption>
 							<h4 class="aa-product-title">
 								<a href="#">Chocalte Cake</a>
