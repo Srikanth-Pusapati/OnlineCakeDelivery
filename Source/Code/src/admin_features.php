@@ -5,50 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="css/admin_cake_update.css">
 	
 	<style>
-
-		#tabs a {
-			width: 40%;
-		}
-
-		#tabs a li {
-
-			display: inline-block;
-			width: 30%;
-			margin: auto;
-			background-color:#eee;
-		} 
-
-		#tabs a li:hover,
-		#tabs a li:active{
-			background-color: red;
-			color: white;
-		}
-
-		#totabl {
-			display:none;
-		}
-
-		#content div {
-			padding: 20px;
-			float: none;
-		}
-
-		#totab2 {
-			display:none;
-		}
-		
-		#litotab1.selected {
-			background-color:red;
-			color: white;
-		}
-
-
-		#litotab2.selected {
-			background-color:red;
-			color: white;
-		}
-
-
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" ></script>
 
@@ -161,13 +117,14 @@ if (isset ( $_POST ["submit"] )) {
 				if(isset($_SESSION["userType"])){
 					echo "Sucessfully updated the cake.";
 				}
-				$conn->close ();
 			} else {
 				$imageUploadError = "Sorry, there was an error uploading your file.";
 			}
 		}
+		$conn->close();
 	}else{
 		$imageUploadError ="has error please check.";
+		$conn->close();
 	}
 }
 
@@ -229,8 +186,12 @@ function redirectBrowser($userType){
 </div>
 
 <div id="totab2">
-	<p> Feedback content</p>
-</div>
+<?php 
+	$conn = connectToDatabase("localhost", "root", "","onlinecakedelivery");
+	
+	?>
+		
+	</div>
 
 </section>
 

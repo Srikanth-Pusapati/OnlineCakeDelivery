@@ -105,7 +105,7 @@
 		<?php 
 		function redirectBrowser($userType){
 			if($userType == 'admin'){
-				$redirectpage= "Location: admin_control.php";
+				$redirectpage= "Location: admin_features.php";
 			}else if($userType =='customer'){
 				$redirectpage="Location: index_Customer_logged.php";
 			}else if($userType == 'deliverer'){
