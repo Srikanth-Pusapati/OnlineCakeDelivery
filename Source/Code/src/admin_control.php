@@ -95,11 +95,14 @@ if (isset ( $_POST ["submit"] )) {
 				echo "The file " . basename ( $_FILES ["fileToUpload"] ["name"] ) . " has been uploaded.";
 				//if image is uploaded to the desired database folder
 				$cakeImagePath = basename ( $target_file );
-			
+				//Execute the sql statment.
 				$stmt->execute ();
+
 				if(isset($_SESSION["userType"])){
+					//displaying the success message.
 					echo "Sucessfully updated the cake.";
 				}
+				//close the connection.
 				$conn->close ();
 			} else {
 				$imageUploadError = "Sorry, there was an error uploading your file.";

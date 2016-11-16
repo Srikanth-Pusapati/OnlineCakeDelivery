@@ -105,7 +105,7 @@
 									}
 									function redirectHref($userType){
 										if($userType == 'admin'){
-											$redirectpage= "admin_control.php";
+											$redirectpage= "admin_features.php";
 										}else if($userType =='customer'){
 											$redirectpage="index_Customer_logged.php";
 										}else if($userType == 'deliverer'){
