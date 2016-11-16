@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2016 at 11:58 AM
+-- Generation Time: Nov 16, 2016 at 01:21 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -54,6 +54,20 @@ CREATE TABLE `customer_order` (
   `zip` varchar(5) NOT NULL,
   `phone_no` varchar(10) NOT NULL,
   `payment_status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `UI_rating` varchar(10) NOT NULL,
+  `cake_available` varchar(10) NOT NULL,
+  `suggest` varchar(10) NOT NULL,
+  `worth` varchar(10) NOT NULL,
+  `comment` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
 -- --------------------------------------------------------
