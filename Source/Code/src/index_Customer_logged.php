@@ -17,21 +17,28 @@
 
 		<!-- Include Header-->
 		<?php include'header.php' ?>
-		<?php 
-function connectToDatabase(){
-$servername = "localhost";
-$db_username = "root";
-$db_password = "";
-$dbname = "onlinecakedelivery";
-
-// Create connection
-$con = mysqli_connect( $servername, $db_username, $db_password, $dbname );
+		<?php
+/**
+* function for "connect to database".
+*
+* @param servername - name of the server which is default localhost.
+* @param db_username - database username, which is default root.
+* @param db_password - database password, default is empty.
+* @param db_name - database name, in this project it is 'onlinecakedelivery'.
+* @return conn - database connection object.
+* This method tries to connect to database with the provided details and if there is a connection error,
+*  it prints out the error 
+**/			
+function connectToDatabase($servername, $db_username, $db_password, $db_name){
+	
+// Create connection to the database.
+	$conn = new mysqli ( $servername, $db_username, $db_password, $db_name );
 // Check connection
-if ($con->connect_error) {
-	die ( "Connection failed: " . $con->connect_error );
-}	
-
-return $con;
+	if ($conn->connect_error) {
+		die ( "Connection failed: " . $conn->connect_error );
+	}
+//return the connection object.
+	return $conn;
 }
 ?>
 		<!-- / menu -->
@@ -78,14 +85,20 @@ return $con;
 					<!-- start single product item -->
 
 					<?php 
-						$con = connectToDatabase();
+					    // connecting to the database.
+						$con = connectToDatabase("localhost", "root", "","onlinecakedelivery");
+                         // declaring a variable for select query.
 						$sql = " SELECT `cakeid`, `cake_name`, `cake_details`, `cake_ingredients`,
-						`cost_item`, `cake_image_path` FROM `cake_details`";	
+						`cost_item`, `cake_image_path` FROM `cake_details`";
+						////cursor variable for selecting the rows in the database.
 						$result = $con->query( $sql);
+						// condition for checking whether the cursor variable have more than one row.
 						if ($result->num_rows > 0) 
 						{
+							//retriving rows form the database.
 							while($row = $result->fetch_assoc())
-							{
+							{ 
+						     //retriving the values for each variable according to the database.
 								$cakeId = $row["cakeid"];
 								$cakeName = $row["cake_name"];
 								$cakeDetails = $row["cake_details"];
@@ -98,7 +111,7 @@ return $con;
 							<a class="aa-product-img" name="cakeSelected" href="checkout.php?cakeId=<?php echo $cakeId; ?>" >
 										<img src ="img/cakes/<?php echo $cakeImage; ?>" alt = "<?php echo $cakeName; ?>" width= "230px" height= "300px" />
 												<!-- TODO Retrive image from database <img src="img/cakes/2.jpg" alt="cartoon cake img">-->
-
+                                           
 											</a>
 											<a class="aa-add-card-btn" name="cakeSelected" href="checkout.php?cakeId=<?php echo $cakeId; ?>"><span
 														class="fa fa-shopping-cart">
