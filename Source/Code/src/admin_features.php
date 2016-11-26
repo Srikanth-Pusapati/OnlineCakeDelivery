@@ -128,16 +128,6 @@ if (isset ( $_POST ["submit"] )) {
 	}
 }
 
-function redirectBrowser($userType){
-	if($userType == 'admin'){
-		$redirectpage= "Location: admin_control.php";
-	}else if($userType =='customer'){
-		$redirectpage="Location: index_Customer_logged.php";
-	}else if($userType == 'deliverer'){
-		$redirectpage = "Location: customerOrders.php";
-	}
-	return $redirectpage;
-}
 ?>
 <body>
 	<?php include 'header.php' ?>
