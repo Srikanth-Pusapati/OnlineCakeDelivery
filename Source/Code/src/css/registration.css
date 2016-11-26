@@ -1,0 +1,18 @@
+#registration {
+	margin: auto;
+	padding: 5px;
+}
+#registration tr td {
+	padding: 10px;
+	vertical-align: top;
+}
+
+#submit, #reset {
+
+	border: 2px solid green;
+	border-radius: 10px;
+	background-color: green;
+	color: white;
+	padding: 5px 20px;
+	margin: 16px;
+}

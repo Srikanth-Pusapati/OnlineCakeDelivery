@@ -21,7 +21,12 @@
 
 
 	<!-- Include Header-->
-	<?php include'header.php' ?>
+	<?php include'utils.php';
+
+	$utilsObj = new Utils();
+	$utilsObj->includeHeader();
+
+	 ?>
 	
 	<!-- / menu -->
 	<!-- Start slider -->
@@ -217,7 +222,7 @@
 				</li>
 			</ul>
 			<!-- footer -->
-			<?php include'footer.php'?>
+			<?php $utilsObj->includeFooter(); ?>
 		</div>
 	</div>	
 </body>

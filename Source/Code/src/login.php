@@ -8,9 +8,28 @@
 
 <body>
 
-	<?php include 'header.php'?>
+	<?php include 'utils.php'; ?>
 
 	<?php
+		/**
+		* 
+		*/
+		class Login extends Utils
+		{
+
+			public $error=''; 
+
+			function redirectBrowser($userType){
+			if($userType == 'admin'){
+				$redirectpage= "admin_features.php";
+			}else if($userType =='customer'){
+				$redirectpage="index_Customer_logged.php";
+			}else if($userType == 'deliverer'){
+				$redirectpage = "deliverer_customerOrders.php";
+			}
+			return $redirectpage;
+		}
+
 			/**
 			*Function called to verify the login credentials that are entered.
 			*
@@ -18,101 +37,96 @@
 			*
 			*
 			**/
-			if((isset($_SESSION["userEmail"]) && (isset($_SESSION["userID"])) && (isset($_SESSION["userType"])))){
-				echo"User session already exists";
-				$redirectpage = redirectBrowser($_SESSION["userType"]);	
-				header($redirectedpage);
-				exit();
-			}
-			else{
-			// Variable To Store Error Message	
-			$error=''; 
-			//Check if submit is clicked.
-			if (isset($_POST['submit'])) {
-				//checking if data entered is empty or not.
-				if (empty($_POST['userEmail']) || empty($_POST['userPassword'])) {
-					$error = "user Email or Password are empty.";
+			function checkIfUserSessionExists(){
+				if((isset($_SESSION["userEmail"]) && (isset($_SESSION["userID"])) && (isset($_SESSION["userType"])))){
+					echo"User session already exists";
+					$redirectpage = $this->redirectBrowser($_SESSION["userType"]);	
+					$this->loadPage($redirectpage);
+
 				}
-				else
-				{
-					$con = connectToDatabase();
+			}
 
-					$userType = $_POST['userType'];
-					if($userType == 'admin'){
-						$table="login_admin";
-					}else if($userType =='customer'){
-						$table = "login_customer";
-					}else if($userType == 'deliverer'){
-						$table = "login_deliverer";
+			function getTableName($userType){
+
+				if($userType == 'admin'){
+					$table="login_admin";
+				}else if($userType =='customer'){
+					$table = "login_customer";
+				}else if($userType == 'deliverer'){
+					$table = "login_deliverer";
+				}
+				return $table;
+			}
+			function checkLoginDetails(){
+
+				// Variable To Store Error Message	
+				
+			//Check if submit is clicked.
+				if (isset($_POST['submit'])) {
+				//checking if data entered is empty or not.
+					if (empty($_POST['userEmail']) || empty($_POST['userPassword'])) {
+						$this->error = "user Email or Password are empty.";
+						echo "*".$this.error;
 					}
+					else
+					{
 
-					$userEmail=$_POST['userEmail'];
-					$password=$_POST['userPassword'];
+						$con= $this->connectToDatabase();
+
+						$userType=$_POST['userType'];
+						$table=$this->getTableName($userType);
+						$userEmail=$_POST['userEmail'];
+						$password=$_POST['userPassword'];
 
 // SQL query to fetch information of registerd users and finds user match.
-					$sql = ("SELECT email,password, userid FROM ".$table." WHERE email ='".$userEmail."'");
+						$sql = ("SELECT email,password, userid FROM ".$table." WHERE email ='".$userEmail."'");
 
-					$result = $con->query( $sql);
-					if ($result->num_rows > 0) 
-					{
-						while($row = $result->fetch_assoc())
+						$result = $con->query( $sql);
+						if ($result->num_rows > 0) 
 						{
-							$dbUserEmail=$row['email'];
-							$dbPassword=$row['password'];
-							$userId=$row['userid'];
-							
-							if($userEmail == $dbUserEmail && $password == $dbPassword)
+							while($row = $result->fetch_assoc())
 							{
-								$_SESSION['userEmail']=$userEmail;
-								$_SESSION['userID'] = $userId;
-								$_SESSION['userType'] = $userType;
-								/* Redirect browser */
-								$redirectedpage = redirectBrowser($userType);
-								header($redirectedpage);
-								exit();
-							} else {
-								echo "Invalid username or password!";
+								$dbUserEmail=$row['email'];
+								$dbPassword=$row['password'];
+								$userId=$row['userid'];
+
+								if($userEmail == $dbUserEmail && $password == $dbPassword)
+								{
+									$_SESSION['userEmail']=$userEmail;
+									$_SESSION['userID'] = $userId;
+									$_SESSION['userType'] = $userType;
+									/* Redirect browser */
+									$redirectedpage = $this->redirectBrowser($userType);
+									$this->loadPage($redirectedpage);
+									
+								} else {
+									$this->error= "Invalid username or password!";
+															echo "*".$this.error;
+
+								}
 							}
+						}else {
+							$this->error= "User Email or Password NOT valid, please Re-check.";
+													echo "*".$this.error;
+
 						}
-					}else {
-						$error= "NOT a valid userEmail or password given, please check.";
+
+
 					}
-					
-					
 				}
 			}
 		}
-		?>
 
-		<?php 
-		function connectToDatabase(){
-			$servername = "localhost";
-			$db_username = "root";
-			$db_password = "";
-			$dbname = "onlinecakedelivery";
 
-// Create connection
-			$con = new mysqli ( $servername, $db_username, $db_password, $dbname );
-// Check connection
-			if ($con->connect_error) {
-				die ( "Connection failed: " . $con->connect_error );
-			}	
+		$loginObject =new Login();
+		$loginObject->includeHeader();
 
-			return $con;
-		}
-		?>
+		//if(isset($_SESSION))
+			$loginObject->checkIfUserSessionExists();
+		//else{
+			$loginObject->checkLoginDetails();	
+		//}
 
-		<?php 
-		function redirectBrowser($userType){
-			if($userType == 'admin'){
-				$redirectpage= "Location: admin_features.php";
-			}else if($userType =='customer'){
-				$redirectpage="Location: index_Customer_logged.php";
-			}else if($userType == 'deliverer'){
-				$redirectpage = "Location: deliverer_customerOrders.php";
-			}
-			return $redirectpage;
-		}
 		?>
 
 		<h2>Login</h2>
@@ -138,6 +152,7 @@
 				</select>
 			</td>
 		</tr>
+		<tr><td colspan="2"><?php if($loginObject->error !==""){ echo "* ".$loginObject->error ;}  ?></td></tr>
 		<tr><td>
 			<input type="submit" value="login" name="submit" id="login_button"/>
 		</td>
@@ -146,6 +161,6 @@
 </form>
 
 
-<?php include 'footer.php'?>
+<?php $loginObject->includeFooter(); ?>
 </body>
 </html>

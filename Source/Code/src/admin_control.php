@@ -122,11 +122,11 @@ if (isset ( $_POST ["submit"] )) {
 **/
 function redirectBrowser($userType){
 	if($userType == 'admin'){
-		$redirectpage= "Location: admin_control.php";
+		$redirectpage= "admin_control.php";
 	}else if($userType =='customer'){
-		$redirectpage="Location: index_Customer_logged.php";
+		$redirectpage="index_Customer_logged.php";
 	}else if($userType == 'deliverer'){
-		$redirectpage = "Location: customerOrders.php";
+		$redirectpage = "customerOrders.php";
 	}
 	return $redirectpage;
 }
