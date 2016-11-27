@@ -17,6 +17,8 @@
 		class Login extends Utils
 		{
 
+			private $userEmail;
+			private $password;
 			public $error=''; 
 
 			function redirectBrowser($userType){
@@ -29,7 +31,18 @@
 			}
 			return $redirectpage;
 		}
-
+			public function setUserEmail($userEmail){
+				$this->userEmail = $userEmail;
+			}
+			public function setPassword($password){
+				$this->password = $password;
+			}
+			public function getUserEmail(){
+				return $this->userEmail;
+			}
+			public function getPassword(){
+				return $this->password;
+			}
 			/**
 			*Function called to verify the login credentials that are entered.
 			*
@@ -57,6 +70,11 @@
 				}
 				return $table;
 			}
+
+			function setUserLoginDetails($userEmail,$userPassword){
+						$this->setUserEmail($userEmail);
+						$this->setPassword($userPassword);
+					}
 			function checkLoginDetails(){
 
 				// Variable To Store Error Message	
@@ -75,9 +93,8 @@
 
 						$userType=$_POST['userType'];
 						$table=$this->getTableName($userType);
-						$userEmail=$_POST['userEmail'];
-						$password=$_POST['userPassword'];
-
+						$this-> setUserLoginDetails($_POST['userEmail'],$_POST['userPassword']);
+						
 // SQL query to fetch information of registerd users and finds user match.
 						$sql = ("SELECT email,password, userid FROM ".$table." WHERE email ='".$userEmail."'");
 
