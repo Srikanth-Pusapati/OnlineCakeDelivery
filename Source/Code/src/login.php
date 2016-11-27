@@ -96,7 +96,7 @@
 						$this-> setUserLoginDetails($_POST['userEmail'],$_POST['userPassword']);
 						
 // SQL query to fetch information of registerd users and finds user match.
-						$sql = ("SELECT email,password, userid FROM ".$table." WHERE email ='".$userEmail."'");
+						$sql = ("SELECT email,password, userid FROM ".$table." WHERE email ='".$this->getUserEmail()."'");
 
 						$result = $con->query( $sql);
 						if ($result->num_rows > 0) 
@@ -107,9 +107,9 @@
 								$dbPassword=$row['password'];
 								$userId=$row['userid'];
 
-								if($userEmail == $dbUserEmail && $password == $dbPassword)
+								if($this->getUserEmail() == $dbUserEmail && $this->getPassword()== $dbPassword)
 								{
-									$_SESSION['userEmail']=$userEmail;
+									$_SESSION['userEmail']=$this->getUserEmail();
 									$_SESSION['userID'] = $userId;
 									$_SESSION['userType'] = $userType;
 									/* Redirect browser */
@@ -118,13 +118,13 @@
 									
 								} else {
 									$this->error= "Invalid username or password!";
-															echo "*".$this.error;
+															echo "*".$this->error;
 
 								}
 							}
 						}else {
 							$this->error= "User Email or Password NOT valid, please Re-check.";
-													echo "*".$this.error;
+													echo "*".$this->error;
 
 						}
 
