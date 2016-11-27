@@ -12,29 +12,31 @@ class customerDeliveryDetails extends Utils
 	 private  $country;
 	 private  $address;
 	 private  $zip;
+	 private $errorMessage="";
 	 
+	 function setDetails($OrderDetails){
+		 
+	//declaring a variable date_Of_Delivery for retrieving the customer cake delivery date.
+	$this->date_Of_Delivery = $OrderDetails['Date_Of_Delivery'];
+	//declaring a variable time_Of_DeliveryDelivery for retrieving the customer cake delivery time.
+	$this->time_Of_Delivery = $OrderDetails['Time_Of_Delivery'];
+	//declaring a variable email_Address for retrieving the customer email.
+	$this->email_Address = $OrderDetails['Email_Address']; 
+	//declaring a variable phone for retrieving the customer phone.
+	$this->phone = $OrderDetails['Phone'];
+    //declaring a variable address for retrieving the customer address.	
+	$this->address = $OrderDetails['Address'];
+    //declaring a variable country for retrieving the customer country.	
+	$this->country=$OrderDetails['country'];
+	//declaring a variable city for retrieving the customer city.
+	$this->city=$OrderDetails['city'];
+	//declaring a variable zip for retrieving the customer zip.
+	$this->zip=$OrderDetails['zip'];
+	 }
 	
 	function retriveAddressDetails($con)
 	{
-// // check if the submit button of the form for the deliverer details is clicked or not.
-	if(isset($_POST["submit"]))
-	{	
-	//declaring a variable date_Of_Delivery for retrieving the customer cake delivery date.
-	$this->date_Of_Delivery = $_POST['Date_Of_Delivery'];
-	//declaring a variable time_Of_DeliveryDelivery for retrieving the customer cake delivery time.
-	$this->$time_Of_Delivery = $_POST['Time_Of_Delivery'];
-	//declaring a variable email_Address for retrieving the customer email.
-	$this->$email_Address = $_POST['Email_Address']; 
-	//declaring a variable phone for retrieving the customer phone.
-	$this->$phone = $_POST['Phone'];
-    //declaring a variable address for retrieving the customer address.	
-	$this->$address = $_POST['Address'];
-    //declaring a variable country for retrieving the customer country.	
-	$this->$country=$_POST['country'];
-	//declaring a variable city for retrieving the customer city.
-	$this->$city=$_POST['city'];
-	//declaring a variable zip for retrieving the customer zip.
-	$this->$zip=$_POST['zip'];
+		
 	//declaring a variable userid for retrieving the customer id.
 	$userid=$_SESSION["userID"];
 	//declaring a variable cakeId for retrieving the cakeId.
@@ -42,10 +44,7 @@ class customerDeliveryDetails extends Utils
 	//initializing a variable order_status for storing the status of order.
 	$order_status="pending";
 	//initializing a variable payment_status for storing the payment_status .
-	$payment_status="not_yet_paid";
-	//declaring a variable error_message for storing error message.
-	$error_message = "";
-	echo "Cake id ".$cakeId." userID ".$userid ." is printed";
+	$payment_status="NOT YET PAID";
     // declaring variable con to call function connectToDatabase and storing in it
 	//$con= connectToDatabase("localhost", "root", "","onlinecakedelivery");
 	//Execute sql query to insert customer order details into database
@@ -53,23 +52,48 @@ class customerDeliveryDetails extends Utils
 		`time_of_delivery`, `order_status`, `order_mailing_address`, `city`, `zip`, `phone_no`,
 		`payment_status`) values (?,?,null,?,?,?,?,?,?,?,?)");
 	//Bind the appropriate values that have to be inserted into db
-	$stmt1->bind_param("iissssssss",$userid,$cakeId,$date_Of_Delivery,$time_Of_Delivery,$order_status,$address,$city,$zip,$phone,$payment_status);
+	$stmt1->bind_param("iissssssss",$userid,$cakeId,$this->date_Of_Delivery,$this->time_Of_Delivery,$order_status,$this->address,
+	$this->city,$this->zip,$this->phone,$payment_status);
 	//execute sql statement
 	if($stmt1->execute()){
 		echo "order updated";
      }else{
      	echo "Order not updated";
      }
-	}
+	
  }
-     
-	 function validationOfData()
+     /*function checkDateofDelievery($DateOfDelivery){
+		// validation for date and time
+		$now =new DateTime();
+		if($now>=$this->date_Of_Delivery){
+			return true;
+			//$this->setErrorMessage("Invalid date of delivery and time of delivery.");
+		}
+		else
+		{
+			return false;
+		}
+	 }*/
+	 
+	 function setErrorMessage($errorMessage){
+		 $this->errorMessage = $errorMessage;
+	 }
+	 
+	 function getErrorMessage(){
+		 return $this->errorMessage;
+	 }
+	 
+	 function getDateofDelievery(){
+		 return $this->date_Of_Delivery;
+	 }
+	 function getPhoneNumber(){
+		 return $this->phone;
+	 }
+	 function validationOfData($email_Address)
 	{
-	// validation for date and time
-	$now =new DateTime();
-	if($now>=$this->date_Of_Delivery){
-		$error_message="Invalid date of delivery and time of delivery.<br/>";
-	}
+		//$this->checkDateofDelievery($this->date_Of_Delivery);
+		
+	
 	 //validating the email
 	 $email_Address = filter_var($email_Address, FILTER_SANITIZE_EMAIL);
 
@@ -79,25 +103,71 @@ class customerDeliveryDetails extends Utils
 	else {
 	echo("$email is not a valid email address");
 	}
+	}
+	 function validation_phonenumber($phone_number)
+	 {
 	 //validating the phone number
-	 if(!preg_match('/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/', $_POST['phone']))
-    {
-      $error = 'Invalid Number!';
-    }
+	 echo $phone_number;
+	 echo "preg match ".preg_match('/^\d{10}/', $phone_number,$matcher);
+	 print_r($matcher);
+	 if(!preg_match('/^\d{10}/', $phone_number, $matcher))
+     {
+      //$error = 'Invalid Number!';
+	  return false;
+     }
+		 return true;
 	}
 	 function redirect()
 	  {
 		//redirect to feedback page when place order button is clicked
 	  header("location: feedback.php");
       }
+	  
+	  
+	  function checkDateofDelievery($dateOfDelivery)
+	  {
+		// validation for date and time
+		$now =new DateTime();
+		if($now >= $dateOfDelivery){
+			return true;
+			//$this->setErrorMessage("Invalid date of delivery and time of delivery.");
+		}
+			return false;
+	 }
 	
 }
-$Obj= new customerDeliveryDetails();
-$Obj->includeHeader();
-$con=$Obj->connectToDatabase();
-$Obj->retriveAddressDetails($con);
-$Obj->validationOfData();
-$Obj->redirect();
-$Obj->includeFooter();
+$obj= new customerDeliveryDetails();
+$obj->includeHeader();
+$con=$obj->connectToDatabase();
+if(isset($_POST["submit"]))
+	{	
+$obj->setDetails($_POST);
+$date_of_delivery=$obj->getDateofDelievery();
+$phone_number=$obj->getPhoneNumber();
+if($obj->checkDateofDelievery($date_of_delivery))
+{
+	if($obj->validation_phonenumber($phone_number))
+	{
+		$obj->validationOfData();
+		$obj->retriveAddressDetails($con);
+		//$obj->redirect()
+	}
+	else
+	{
+		$obj->setErrorMessage("Invalid Phone number");
+	}
+}
+else
+{
+	$obj->setErrorMessage("Invalid date of delivery and time of delivery.");
+}
+if($obj->getErrorMessage() ==""){
+			$obj->redirect();
+
+}else{
+	echo "<p id=\"errorMessage\">".$obj->getErrorMessage()."</p>";
+}
+	}
+$obj->includeFooter();
 ?>
 
