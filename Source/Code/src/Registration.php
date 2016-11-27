@@ -5,9 +5,9 @@
 	<link href="css/registration.css" rel="stylesheet" />
 	<?php
 	include 'utils.php';
-	/*$utilsObj = new Utils();
+	$utilsObj = new Utils();
 
-	$utilsObj -> includeHeader();*/
+	$utilsObj -> includeHeader();
 	//check if the submit button of the form for uploading the customer details is clicked or not
 	class Registration extends Utils {
 		private $uname;
@@ -119,7 +119,6 @@
 		}
 	}
 	$registrationObject = new Registration();
-	$registrationObject->includeHeader();
 
 	if(isset($_POST["submit"])){
 		
