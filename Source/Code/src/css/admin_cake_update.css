@@ -22,7 +22,8 @@ table {
 
 	display: inline-block;
 	width: 30%;
-	margin: auto;
+    padding: 10px 20px;
+    margin: 10px 20px;
 	background-color:#eee;
 } 
 
@@ -38,7 +39,7 @@ table {
 
 #content div {
 	padding: 20px;
-	float: none;
+	float: left;
 }
 
 #totab2 {
@@ -54,5 +55,29 @@ table {
 #litotab2.selected {
 	background-color:red;
 	color: white;
+}
+
+.error{
+color: red;
+}
+
+#adminUpdate{
+	vertical-align: top;
+}
+
+#feedbackId{
+	padding: 10px 20px;
+	margin: 10px;
+	border : 2px solid black;
+	display: inline-block;
+	width: 100;
+}
+
+#feedbackId tbody tr{
+	vertical-align: top;
+}
+
+#feedbackId tbody tr td{
+	padding-right: 20px;
 }
 

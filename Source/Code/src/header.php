@@ -5,10 +5,17 @@
 	class Header{
 
 		function checkIfSessionExists(){
+			
 			session_start();
+			
 			if(isset($_SESSION["userEmail"])){ 
-				echo "<li><p>Welcome ".$_SESSION["userEmail"]."</p></li>";
+				echo "<li class=\"hidden-xs\"><a >Welcome ".$_SESSION["userEmail"]."</a></li>";
+				if(!isset($_SESSION["userType"])=="customer"){
+					echo "<li class=\"hidden-xs\"><a href=\"customerStatus.php\">Status</a></li>";
+				}
+				
 				echo "<li class=\"hidden-xs\"><a href=\"logout.php\">Logout</a></li>";
+				
 			}else{ 
 				echo "<li><a href=\"login.php\">My Account</a></li>";
 				echo "<li class=\"hidden-xs\"><a href=\"Registration.php\">Registration</a></li>";
