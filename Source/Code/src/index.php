@@ -74,7 +74,7 @@
 				<li>
 					<figure>
 						<a class="aa-product-img" href="#"><img
-							src="img/cakes/2.jpg" alt="cartoon cake img">
+							src="img/cakes_index/2.jpg" alt="cartoon cake img">
 						</a>
 						<a class="aa-add-card-btn" href="#"><span
 							class="fa fa-shopping-cart"></span>Order
@@ -92,7 +92,7 @@
 				<!-- start single product item -->
 				<li>
 					<figure>
-						<a class="aa-product-img" href="#"><img src="img/cakes/6.png"
+						<a class="aa-product-img" href="#"><img src="img/cakes_index/6.png"
 							alt="chocy">
 						</a>
 						<a class="aa-add-card-btn" href="#">
@@ -113,7 +113,7 @@
 				<!-- start single product item -->
 				<li>
 					<figure>
-						<a class="aa-product-img" href="#"><img src="img/cakes/4.jpg"
+						<a class="aa-product-img" href="#"><img src="img/cakes_index/4.jpg"
 							alt="cake3">
 						</a>
 						<a class="aa-add-card-btn" href="#">
@@ -132,7 +132,7 @@
 				<!-- start single product item -->
 				<li>
 					<figure>
-						<a class="aa-product-img" href="#"><img src="img/cakes/7.png"
+						<a class="aa-product-img" href="#"><img src="img/cakes_index/7.png"
 							alt="cake4">
 						</a>
 						<a class="aa-add-card-btn" href="#"><span
@@ -151,7 +151,7 @@
 				<!-- start single product item -->
 				<li>
 					<figure>
-						<a class="aa-product-img" href="#"><img src="img/cakes/12.png"
+						<a class="aa-product-img" href="#"><img src="img/cakes_index/12.png"
 							alt="cake5">
 						</a>
 						<a class="aa-add-card-btn" href="#"><span
@@ -168,7 +168,7 @@
 				<!-- start single product item -->
 				<li>
 					<figure>
-						<a class="aa-product-img" href="#"><img src="img/cakes/9.png"
+						<a class="aa-product-img" href="#"><img src="img/cakes_index/9.png"
 							alt="cake5">
 						</a>
 						<a class="aa-add-card-btn" href="#"><span
@@ -186,7 +186,7 @@
 				</li>
 				<li>
 					<figure>
-						<a class="aa-product-img" href="#"><img src="img/cakes/12.png"
+						<a class="aa-product-img" href="#"><img src="img/cakes_index/12.png"
 							alt="cake6">
 						</a>
 						<a class="aa-add-card-btn" href="#"><span
@@ -205,7 +205,7 @@
 				<!-- start single product item -->
 				<li>
 					<figure>
-						<a class="aa-product-img" href="#"><img src="img/cakes/11.png"
+						<a class="aa-product-img" href="#"><img src="img/cakes_index/11.png"
 							alt="cake7">
 						</a>
 						<a class="aa-add-card-btn" href="#">
