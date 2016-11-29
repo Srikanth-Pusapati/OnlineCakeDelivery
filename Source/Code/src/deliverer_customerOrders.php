@@ -56,8 +56,8 @@ $utils->includeHeader();
 								echo "
 								<td><input type=\"submit\" name=\"selectcustomer_order\" value =\"Pick Customer Order\" /></td>";
 								/* Here orderid is hidden item the main purpose is to send orderid value to "deliverer_selectedOrder.php" file   */
-								echo "<div id=\"hiddenField\">
-								<td><input type=\"hidden\" name = \"orderid\" value=".$row["orderid"]." /></td></div>
+								echo "
+								<td><input type=\"hidden\" name = \"orderid\" value=".$row["orderid"]." /></td>
 							</tr>";
 						}
 						echo "
