@@ -6,8 +6,9 @@
 
 		function checkIfSessionExists(){
 			
-			session_start();
-			
+			if (session_status() == PHP_SESSION_NONE) {
+				session_start();
+			}
 			if(isset($_SESSION["userEmail"])){ 
 				echo "<li class=\"hidden-xs\"><a >Welcome ".$_SESSION["userEmail"]."</a></li>";
 				if($_SESSION["userType"] == "customer"){
