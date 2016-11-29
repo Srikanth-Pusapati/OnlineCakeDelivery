@@ -89,27 +89,23 @@ class customerDeliveryDetails extends Utils
 	 function getPhoneNumber(){
 		 return $this->phone;
 	 }
-	 function validationOfData($email_Address)
+	 public function getEmailAddress(){
+		 return $this->email_Address;
+	 }
+	 function validationOfEmail($email_Address)
 	{
-		//$this->checkDateofDelievery($this->date_Of_Delivery);
-		
-	
 	 //validating the email
-	 $email_Address = filter_var($email_Address, FILTER_SANITIZE_EMAIL);
+	 if(!preg_match('/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/', $email_Address, $matcher))
+     {
+	  return false;
+     }
+		 return true;
+	
 
-	 if (!filter_var($email_Address, FILTER_VALIDATE_EMAIL) === false) {
-	echo("$email is a valid email address");
-	}
-	else {
-	echo("$email is not a valid email address");
-	}
 	}
 	 function validation_phonenumber($phone_number)
 	 {
 	 //validating the phone number
-	 echo $phone_number;
-	 echo "preg match ".preg_match('/^\d{10}/', $phone_number,$matcher);
-	 print_r($matcher);
 	 if(!preg_match('/^\d{10}/', $phone_number, $matcher))
      {
       //$error = 'Invalid Number!';
@@ -126,13 +122,18 @@ class customerDeliveryDetails extends Utils
 	  
 	  function checkDateofDelievery($dateOfDelivery)
 	  {
+		  echo "inside 1";
 		// validation for date and time
 		$now =new DateTime();
-		if($now >= $dateOfDelivery){
-			return true;
+		//echo "value of now is ".$now;
+		
+		if($now >= strtotime( $dateOfDelivery)){
+			echo "value of datedelivery is ".$dateOfDelivery;
+		return false;
 			//$this->setErrorMessage("Invalid date of delivery and time of delivery.");
 		}
-			return false;
+		echo "always true ";
+			return true;
 	 }
 	
 }
@@ -144,12 +145,16 @@ if(isset($_POST["submit"]))
 $obj->setDetails($_POST);
 $date_of_delivery=$obj->getDateofDelievery();
 $phone_number=$obj->getPhoneNumber();
+
 if($obj->checkDateofDelievery($date_of_delivery))
 {
 	if($obj->validation_phonenumber($phone_number))
 	{
-		$obj->validationOfData();
+		if($obj->validationOfEmail($obj->getEmailAddress())){
 		$obj->retriveAddressDetails($con);
+		}else{
+			$obj->setErrorMessage("Invalid Email Address");
+		}
 		//$obj->redirect()
 	}
 	else
