@@ -40,13 +40,12 @@ include 'utils.php';
 class AdminFeatures extends Utils{
 
 // variable for showcasing any error if produced during uploading the image.
-	private $imageUploadError="";
+
 	private $cakeName;
 	private $cakeDetails;
 	private $cakeIngredients;
 	private $cakePrice;
 	private $cakeImagePath;
-	private $successMessage;
 	private $uiRating;
 	private $cakeAvailability;
 	private $suggestions;
@@ -92,13 +91,7 @@ class AdminFeatures extends Utils{
 	public function getComments(){
 		return $this->comments;
 	}
-	public function setSuccessMessage($successMessage){
-		$this->successMessage = $successMessage;
-	}
-
-	public function getSuccessMessage(){
-		return $this->successMessage;
-	}
+	
 	public function setCakeName($cakeName){
 		$this->cakeName=$cakeName;
 	}
@@ -125,12 +118,7 @@ class AdminFeatures extends Utils{
 		return $this->cakePrice;
 	}
 
-	public function setImageUploadError($imageUploadError){
-		$this->imageUploadError=$imageUploadError;
-	}
-	public function getImageUploadError(){
-		return $this->imageUploadError;
-	}
+	
 
 	function uploadCake($adminCakeDetails){
 	//check if cake name or cake price and the cake image is empty, proceed only if the fields are non-empty.
@@ -147,18 +135,17 @@ class AdminFeatures extends Utils{
 			if (getimagesize ( $_FILES ["fileToUpload"] ["tmp_name"] ) !== false) {
 		// Check if file already exists
 				if (file_exists ( $target_file )) {
-			//if file exists updating imageUploadError with the respective error.
-					$this->setImageUploadError("Sorry, file already exists.");
+								echo ("Sorry, file already exists. <br>");
 					$uploadOk = 0;
 				} elseif ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-					$this->setImageUploadError("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");
+					echo ("Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br>");
 					$uploadOk = 0;
 				} else {
 			//$imageUploadError = "File is an image - " . $check ["mime"] . ".";
 					$uploadOk = 1;
 				}
 			} else {
-				$this->setImageUploadError("File is not an image.");
+				echo ("File is not an image. <br>");
 				$uploadOk = 0;
 			}
 			$this->updateCakeFormDetails($adminCakeDetails);
@@ -174,22 +161,21 @@ class AdminFeatures extends Utils{
 			$stmt->bind_param ( "sssds", $this->cakeName, $this->cakeDetails, $this->cakeIngredients, $this->cakePrice, $this->cakeImagePath );
 	// Check if $uploadOk is set to 0 by an error
 			if ($uploadOk == 0) {
-				$this->setImageUploadError("Sorry, your file was not uploaded.");
+							echo ("Sorry, your file was not uploaded.<br>");
 		// if everything is ok, try to upload file
 			} else {
 				if (move_uploaded_file ( $_FILES ["fileToUpload"] ["tmp_name"], $target_file )) {
 					$this->setCakeImagePath( basename ( $target_file ));
 					if($stmt->execute()){
-						$this->setSuccessMessage("Sucessfully uploaded the cake.");
+						echo "Sucessfully uploaded the cake.<br>";
 					}
 				} else {
-					$this->setImageUploadError("Sorry, there was an error uploading your file.");
+						echo ("Image already existing in the destination folder, Please recheck.<br>");
 				}
 			}
 			$conn->close();
 		}else{
-			$this->setImageUploadError(" Image upload has error please check.");
-			$conn->close();
+			echo (" Image upload has error please check. <br>");
 		}
 	}
 	function updateCakeFormDetails($adminCakeDetails){
@@ -271,13 +257,7 @@ class AdminFeatures extends Utils{
 				</tbody>
 			</table>";
 		}
-		public function getStatus(){
-			if($this->getImageUploadError !=""){ 
-				echo $this->getImageUploadError(); 
-			}else{
-				echo $this->getSuccessMessage();
-			}
-		}
+	
 	}
 
 	?>
@@ -287,9 +267,7 @@ class AdminFeatures extends Utils{
 		$utilsObject=new Utils();
 		$utilsObject->includeHeader(); 
 		$adminFeaturesObject = new  AdminFeatures();
-		if(isset($_POST["submit"])){
-			$adminFeaturesObject->uploadCake($_POST);
-		}
+		
 		?>
 		<section id="content">
 			<ul id="tabs">
@@ -323,8 +301,9 @@ class AdminFeatures extends Utils{
 						<tr>
 							<td>Select image to upload:</td><td>	<input type="file" name="fileToUpload" id="fileToUpload"/>
 							<div class="errorMessage" max-width="360px" >*<?php
-								if(isset($_POST["submit"]))
-									$adminFeaturesObject->getStatus();
+								if(isset($_POST["submit"])){
+									$adminFeaturesObject->uploadCake($_POST);
+								}
 								
 								?></div>
 							</td>
