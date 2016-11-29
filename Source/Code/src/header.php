@@ -10,10 +10,9 @@
 			
 			if(isset($_SESSION["userEmail"])){ 
 				echo "<li class=\"hidden-xs\"><a >Welcome ".$_SESSION["userEmail"]."</a></li>";
-				if(!isset($_SESSION["userType"])=="customer"){
-					echo "<li class=\"hidden-xs\"><a href=\"customerStatus.php\">Status</a></li>";
+				if($_SESSION["userType"] == "customer"){
+					echo "<li class=\"hidden-xs\"><a href=\"customerStatus.php\">Order Status</a></li>";
 				}
-				
 				echo "<li class=\"hidden-xs\"><a href=\"logout.php\">Logout</a></li>";
 				
 			}else{ 

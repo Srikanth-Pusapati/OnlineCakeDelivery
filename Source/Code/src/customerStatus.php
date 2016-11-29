@@ -21,7 +21,7 @@ class customerStatus extends Utils
 						}
 						else {
 							$this->error= "You did not order any cake";
-													echo "*".$this->error;
+							echo "* ".$this->error;
 						}
 						
 	 }

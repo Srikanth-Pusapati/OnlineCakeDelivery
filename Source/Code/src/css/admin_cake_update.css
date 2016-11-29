@@ -22,8 +22,8 @@ table {
 
 	display: inline-block;
 	width: 30%;
-    padding: 10px 20px;
-    margin: 10px 20px;
+	padding: 10px 20px;
+	margin: 10px 20px;
 	background-color:#eee;
 } 
 
@@ -49,16 +49,18 @@ table {
 #litotab1.selected {
 	background-color:red;
 	color: white;
+	border: 20px solid blanchedalmond;
 }
 
 
 #litotab2.selected {
 	background-color:red;
 	color: white;
+	border: 20px solid blanchedalmond
 }
 
-.error{
-color: red;
+.errorMessage{
+	color: red;
 }
 
 #adminUpdate{

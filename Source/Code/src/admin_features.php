@@ -45,6 +45,7 @@ class AdminFeatures extends Utils{
 	private $cakeDetails;
 	private $cakeIngredients;
 	private $cakePrice;
+	private $cakeImagePath;
 	private $successMessage;
 	private $uiRating;
 	private $cakeAvailability;
@@ -52,6 +53,7 @@ class AdminFeatures extends Utils{
 	private $worth;
 	private $comments;
 	private $feedbackCounter = 1;
+
 
 	public function setUIRating($uiRating){
 		$this->uiRating = $uiRating;
@@ -66,7 +68,12 @@ class AdminFeatures extends Utils{
 	public function getCakeAvailability(){
 		return $this->cakeAvailability;
 	}
-
+	public function setCakeImagePath($cakeImagePath){
+		$this->cakeImagePath = $cakeImagePath;
+	}
+	public function getCakeImagePath(){
+		return $this->cakeImagePath;
+	}
 	public function setSuggestions($suggestions){
 		$this->suggestions = $suggestions;
 	}
@@ -129,7 +136,7 @@ class AdminFeatures extends Utils{
 	//check if cake name or cake price and the cake image is empty, proceed only if the fields are non-empty.
 		if(!empty($adminCakeDetails["cakeName"] ) ||!empty($adminCakeDetails["cakePrice"]) ||!empty($_FILES["fileToUpload"])){
 	//declaring the target_directory, initialized as 'img'; as img/ is the folder for all the images to be stored.
-			$target_dir = "img/cakes";
+			$target_dir = "img/cakes/";
 	//declaring target_file and then initlizing it with the path of the image that is to be uploaded.
 			$target_file = $target_dir . basename ( $_FILES ["fileToUpload"] ["name"] );
 	//declaring a checking variable and initialized it to 0;
@@ -154,10 +161,8 @@ class AdminFeatures extends Utils{
 				$this->setImageUploadError("File is not an image.");
 				$uploadOk = 0;
 			}
-			$this->setCakeName($adminCakeDetails["cakeName"]);
-			$this->setCakeDetails($adminCakeDetails["cakeDetails"]);
-			$this->setCakeIngredients($adminCakeDetails["cakeIngredients"]);
-			$this->setCakePrice($adminCakeDetails["cakePrice"]);
+			$this->updateCakeFormDetails($adminCakeDetails);
+			
 
 			$conn = $this->connectToDatabase();
 
@@ -172,13 +177,10 @@ class AdminFeatures extends Utils{
 				$this->setImageUploadError("Sorry, your file was not uploaded.");
 		// if everything is ok, try to upload file
 			} else {
-
 				if (move_uploaded_file ( $_FILES ["fileToUpload"] ["tmp_name"], $target_file )) {
-					
-					$cakeImagePath = basename ( $target_file );
-					
-					if($stmt->execute ()){
-						$this->setSuccessMessage( "Sucessfully updated the cake.");
+					$this->setCakeImagePath( basename ( $target_file ));
+					if($stmt->execute()){
+						$this->setSuccessMessage("Sucessfully uploaded the cake.");
 					}
 				} else {
 					$this->setImageUploadError("Sorry, there was an error uploading your file.");
@@ -186,11 +188,16 @@ class AdminFeatures extends Utils{
 			}
 			$conn->close();
 		}else{
-			$this->setImageUploadError("has error please check.");
+			$this->setImageUploadError(" Image upload has error please check.");
 			$conn->close();
 		}
 	}
-
+	function updateCakeFormDetails($adminCakeDetails){
+		$this->setCakeName($adminCakeDetails["cakeName"]);
+		$this->setCakeDetails($adminCakeDetails["cakeDetails"]);
+		$this->setCakeIngredients($adminCakeDetails["cakeIngredients"]);
+		$this->setCakePrice($adminCakeDetails["cakePrice"]);
+	}
 
 	function getFeedback(){
 		$con = $this->connectToDatabase();
@@ -222,119 +229,131 @@ class AdminFeatures extends Utils{
 				}else{
 					echo "No review Available";
 				}
-				echo"
+				echo "
 			</td>
 		</tr>
 		<tr>
 			<td><label>Cake Available</label></td>
-			<td>"; if(!($this->getCakeAvailability() =="" )) {
-				echo (ucwords($this->getCakeAvailability()));
-			}else{
-				echo "No review Available";
-			} 
-			echo"</td>
-		</tr>
-		<tr>
-			<td><label>Suggestions</label></td>
-			<td>";  if(!($this->getSuggestions() =="" )) {
-				echo (ucwords($this->getSuggestions()));
-			}else{
-				echo "No review Available";
-			} echo "</td>
-		</tr>
-		<tr>
-			<td><label>Site Worth</label></td>
-			<td>";  if(!($this->getWorth() =="" )) {
-				echo (ucwords($this->getWorth()));
-			}else{
-				echo "No review Available";
-			} echo "</td>
-		</tr>
-		<tr>
-			<td><label>User Comments</label></td>
-			<td>";  if(!($this->getComments() =="" )) {
-				echo (ucwords($this->getComments()));
-			}else{
-				echo "No review Available";
-			} echo "</td>
-		</tr>
-	</tbody>
-</table>";
-}
-}
-
-?>
-<body>
-	<?php
-
-	$utilsObject=new Utils();
-	$utilsObject->includeHeader(); 
-	$adminFeaturesObject = new  AdminFeatures();
-	if(isset($_POST["submit"])){
-		$adminFeaturesObject->uploadCake($_POST);
-	}
-	?>
-	<section id="content">
-		<ul id="tabs">
-			<a href ="#totab1" >
-				<li id="litotab1">Upload Cake</li>
-			</a>
-			<a href ="#totab2">
-				<li id="litotab2">Check Feedback</li>
-			</a>
-		</ul>
-
-		<div id="totab1">
-			
-			<form method="post"
-			action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
-			enctype="multipart/form-data">
-			<table>
-				<tbody id="adminUpdate">
-					<tr>
-						<td>Cake Name:</td><td>	<input type="text" name="cakeName" id="cakeName" required /></td>
-					</tr>
-					<tr>
-						<td>Cake Details:</td><td><input type="text" name="cakeDetails" id="cakeDetails" /></td>
-					</tr>
-					<tr>
-						<td>Cake Ingredients:</td><td><input type="text" name="cakeIngredients" id="cakeIngredients" /></td>
-					</tr>
-					<tr>
-						<td>Cake Price:</td><td><input type="text" name="cakePrice" id="cakePrice" required /></td>
-					</tr>
-					<tr>
-						<td>Select image to upload:</td><td>	<input type="file" name="fileToUpload" id="fileToUpload"/>
-						<div class="error" max-width="360px" >* <?php echo $adminFeaturesObject->getImageUploadError(); ?></div>
-						<div class="success" max-width="360px"> <?php echo $adminFeaturesObject->getSuccessMessage(); ?></div>
-					</td>
+			<td>";
+				if(!($this->getCakeAvailability() =="" )) {
+					echo (ucwords($this->getCakeAvailability()));
+				}else{
+					echo "No review Available";
+				} 
+				echo "</td>
+			</tr>
+			<tr>
+				<td><label>Suggestions</label></td>
+				<td>";
+					if(!($this->getSuggestions() =="" )) {
+						echo (ucwords($this->getSuggestions()));
+					}else{
+						echo "No review Available";
+					} echo "</td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="Upload Image" name="submit" id="upload_button" />
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-
-	
-	
-</div>
-
-<div id="totab2">
-	<?php 
-	//TODO obtain feedback.
-	$adminFeaturesObject->getFeedback();
+					<td><label>Site Worth</label></td>
+					<td>";
+						if(!($this->getWorth() =="" )) {
+							echo (ucwords($this->getWorth()));
+						}else{
+							echo "No review Available";
+						} echo "</td>
+					</tr>
+					<tr>
+						<td><label>User Comments</label></td>
+						<td>";  if(!($this->getComments() =="" )) {
+							echo (ucwords($this->getComments()));
+						}else{
+							echo "No review Available";
+						} echo "</td>
+					</tr>
+				</tbody>
+			</table>";
+		}
+		public function getStatus(){
+			if($this->getImageUploadError !=""){ 
+				echo $this->getImageUploadError(); 
+			}else{
+				echo $this->getSuccessMessage();
+			}
+		}
+	}
 
 	?>
-	
-</div>
+	<body>
+		<?php
 
-</section>
+		$utilsObject=new Utils();
+		$utilsObject->includeHeader(); 
+		$adminFeaturesObject = new  AdminFeatures();
+		if(isset($_POST["submit"])){
+			$adminFeaturesObject->uploadCake($_POST);
+		}
+		?>
+		<section id="content">
+			<ul id="tabs">
+				<a href ="#totab1" >
+					<li id="litotab1">Upload Cake</li>
+				</a>
+				<a href ="#totab2">
+					<li id="litotab2">Check Feedback</li>
+				</a>
+			</ul>
+
+			<div id="totab1">
+
+				<form method="post"
+				action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"
+				enctype="multipart/form-data">
+				<table>
+					<tbody id="adminUpdate">
+						<tr>
+							<td>Cake Name:</td><td>	<input type="text" name="cakeName" id="cakeName" required /></td>
+						</tr>
+						<tr>
+							<td>Cake Details:</td><td><input type="text" name="cakeDetails" id="cakeDetails" /></td>
+						</tr>
+						<tr>
+							<td>Cake Ingredients:</td><td><input type="text" name="cakeIngredients" id="cakeIngredients" /></td>
+						</tr>
+						<tr>
+							<td>Cake Price:</td><td><input type="text" name="cakePrice" id="cakePrice" required /></td>
+						</tr>
+						<tr>
+							<td>Select image to upload:</td><td>	<input type="file" name="fileToUpload" id="fileToUpload"/>
+							<div class="errorMessage" max-width="360px" >*<?php
+								if(isset($_POST["submit"]))
+									$adminFeaturesObject->getStatus();
+								
+								?></div>
+							</td>
+						</tr>
+						<tr>
+							<td><input type="submit" value="Upload Image" name="submit" id="upload_button" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
 
 
 
-<?php $utilsObject->includeFooter(); ?>
+		</div>
+
+		<div id="totab2">
+			<?php 
+			$adminFeaturesObject->getFeedback();
+
+			?>
+
+		</div>
+
+	</section>
+
+
+
+	<?php $utilsObject->includeFooter(); ?>
 
 </body>
 </html>
