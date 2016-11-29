@@ -9,10 +9,10 @@ $utils->includeHeader();
 	<!-- This page is to display all available orders of all customers -->
 	
 	<title>Deliverer Orders</title>
-	<h2>customer orders Available for pick up</h2>
 	<link href="css/deliverer_customerOrders.css" rel="stylesheet">
 </head>
 <body>
+<h2 style="text-align: center;">Customer Orders</h2>
 	<?php
 	class Customer_Orders extends Utils
 	{
@@ -54,7 +54,7 @@ $utils->includeHeader();
 								<td>". $row["cost_item"] ."</td>";
 								/* This "Pick customer order" button is used to confirm that current logined deliverer is gooing to deliver that order */
 								echo "
-								<td><input type=\"submit\" name=\"selectcustomer_order\" value =\"Pick Customer Order\" /></td>";
+								<td><input type=\"submit\" name=\"selectcustomer_order\" class=\"aa-shop-now-btn aa-secondary-btn\" value =\"Pick Customer Order\" /></td>";
 								/* Here orderid is hidden item the main purpose is to send orderid value to "deliverer_selectedOrder.php" file   */
 								echo "
 								<td><input type=\"hidden\" name = \"orderid\" value=".$row["orderid"]." /></td>

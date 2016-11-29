@@ -1,0 +1,16 @@
+table tbody tr td{
+	    padding-bottom: 10px;
+	    padding-right: 30px;
+	    padding-left: 30px;
+	    margin: 5px;
+}
+th{
+	padding-right: 30px;
+}
+#customerStatus{
+	margin: auto;
+}
+
+body{
+	padding-bottom: 20px;
+}

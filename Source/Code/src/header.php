@@ -13,6 +13,9 @@
 				if($_SESSION["userType"] == "customer"){
 					echo "<li class=\"hidden-xs\"><a href=\"customerStatus.php\">Order Status</a></li>";
 				}
+				if($_SESSION["userType"] == "deliverer"){
+					echo "<li class=\"hidden-xs\"><a href=\"deliverer_selectedOrder.php\">Selected Orders</a></li>";
+				}
 				echo "<li class=\"hidden-xs\"><a href=\"logout.php\">Logout</a></li>";
 				
 			}else{ 

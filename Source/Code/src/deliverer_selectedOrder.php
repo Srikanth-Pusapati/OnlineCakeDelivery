@@ -2,12 +2,12 @@
 <html>
 <?php
 include "utils.php";
-
 ?>
+
 <head>
 	<!-- This page is used to display all orders that current logined deliverer should deliverer -->
 	<title>Deliverer Selected orders</title>
-	
+	<link href="css/deliverer_selectedOrderCSS.css" rel="stylesheet">
 </head>
 <body>
 
@@ -45,10 +45,9 @@ if ($result->num_rows > 0) {
 	/* This form is used to display all orders that logined deliverer has to deliverer in table format*/
 	echo "
 	<form>	
-		<table>
+		<table id=\"selectedOrderId\">
 			<tr>
 				<th>Customer Name</th>
-				<th>Date of Delivery</th>
 				<th>Date of Delivery</th>
 				<th>Time of Delivery </th>
 				<th>Mailling Address </th>
