@@ -2,8 +2,9 @@
 <html>
 <head>
 	<?php 
+	// this class contains all functions that header requires and it is included in all pages
 	class Header{
-
+		//this function is used to get useremail of current logined user
 		function checkIfSessionExists(){
 			
 			if (session_status() == PHP_SESSION_NONE) {
@@ -25,7 +26,7 @@
 
 			}
 		}
-
+		// this function is used to which page it as to redirect based on usertype
 		function redirectHref($userType){
 			if($userType == 'admin'){
 				$redirectpage= "admin_features.php";

@@ -36,7 +36,7 @@
 </head>
 <?php
 include 'utils.php';
-
+// this class contains all functions to upload a new cake and view all customer feedbacks
 class AdminFeatures extends Utils{
 
 // variable for showcasing any error if produced during uploading the image.
@@ -119,7 +119,7 @@ class AdminFeatures extends Utils{
 	}
 
 	
-
+	// this function contains logic to upload a new cake
 	function uploadCake($adminCakeDetails){
 	//check if cake name or cake price and the cake image is empty, proceed only if the fields are non-empty.
 		if(!empty($adminCakeDetails["cakeName"] ) ||!empty($adminCakeDetails["cakePrice"]) ||!empty($_FILES["fileToUpload"])){
@@ -178,13 +178,14 @@ class AdminFeatures extends Utils{
 			echo (" Image upload has error please check. <br>");
 		}
 	}
+	// this function is used to set variables related to cake
 	function updateCakeFormDetails($adminCakeDetails){
 		$this->setCakeName($adminCakeDetails["cakeName"]);
 		$this->setCakeDetails($adminCakeDetails["cakeDetails"]);
 		$this->setCakeIngredients($adminCakeDetails["cakeIngredients"]);
 		$this->setCakePrice($adminCakeDetails["cakePrice"]);
 	}
-
+	// this function is used to get feedback of all customers
 	function getFeedback(){
 		$con = $this->connectToDatabase();
 		$sql = "SELECT `UI_rating`, `cake_available`, `suggest`, `worth`, `comment` FROM `feedback`";
@@ -202,7 +203,7 @@ class AdminFeatures extends Utils{
 			}
 		}
 	}
-
+	// this function is used to display feedback of all customers
 	function printResults(){
 		
 		echo "<table id=\"feedbackId\">
