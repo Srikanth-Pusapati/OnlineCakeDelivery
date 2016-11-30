@@ -1,7 +1,7 @@
 <?php
 // includes the header file
 include "utils.php";
-//this class contains all functions used to validate and store checkout details in database
+//this class for storing the delivery details
 class customerDeliveryDetails extends Utils
 {	
         
