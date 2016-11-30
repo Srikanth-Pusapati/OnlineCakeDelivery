@@ -84,7 +84,7 @@
 				//checking if data entered is empty or not.
 					if (empty($_POST['userEmail']) || empty($_POST['userPassword'])) {
 						$this->error = "user Email or Password are empty.";
-						echo "*".$this.error;
+					
 					}
 					else
 					{
@@ -118,13 +118,12 @@
 									
 								} else {
 									$this->error= "Invalid username or password!";
-															echo "*".$this->error;
 
 								}
 							}
 						}else {
 							$this->error= "User Email or Password NOT valid, please Re-check.";
-													echo "*".$this->error;
+													
 
 						}
 
@@ -169,7 +168,7 @@
 				</select>
 			</td>
 		</tr>
-		<tr><td colspan="2"><?php if($loginObject->error !==""){ echo "* ".$loginObject->error ;}  ?></td></tr>
+		<tr><td colspan="2" style="color: red;"><?php if($loginObject->error !==""){ echo "* ".$loginObject->error ;}  ?></td></tr>
 		<tr><td>
 			<input type="submit" value="login" name="submit" id="login_button"/>
 		</td>
