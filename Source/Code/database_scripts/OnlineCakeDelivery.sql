@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2016 at 01:21 AM
+-- Generation Time: Nov 30, 2016 at 03:57 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -34,6 +34,13 @@ CREATE TABLE `cake_details` (
   `cost_item` double NOT NULL,
   `cake_image_path` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+--
+-- Dumping data for table `cake_details`
+--
+
+INSERT INTO `cake_details` (`cakeid`, `cake_name`, `cake_details`, `cake_ingredients`, `cost_item`, `cake_image_path`) VALUES
+(1, 'Chocolate Cake', 'Cool fantastic cake', 'chocolate, strawberries', 32.56, '6.png');
 
 -- --------------------------------------------------------
 
@@ -82,6 +89,13 @@ CREATE TABLE `login_admin` (
   `email` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
+--
+-- Dumping data for table `login_admin`
+--
+
+INSERT INTO `login_admin` (`userid`, `password`, `email`) VALUES
+(1, 'Admin@123', 'admin@test.com');
+
 -- --------------------------------------------------------
 
 --
@@ -106,6 +120,13 @@ CREATE TABLE `login_deliverer` (
   `email` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
 
+--
+-- Dumping data for table `login_deliverer`
+--
+
+INSERT INTO `login_deliverer` (`userid`, `password`, `email`) VALUES
+(2, 'Sri_1993', 'sri@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -121,6 +142,14 @@ CREATE TABLE `registration` (
   `mobile_number` varchar(10) NOT NULL,
   `user_type` varchar(15) NOT NULL DEFAULT 'customer'
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii;
+
+--
+-- Dumping data for table `registration`
+--
+
+INSERT INTO `registration` (`userid`, `user_name`, `password`, `email`, `address`, `mobile_number`, `user_type`) VALUES
+(1, 'Admin', 'Admin@123', 'admin@test.com', '911 Bernard St, #3, Denton', '9407459409', 'admin'),
+(2, 'srikanth', 'Sri_1993', 'sri@gmail.com', '911 Bernard St,#3, Denton', '9407459409', 'deliverer');
 
 --
 -- Triggers `registration`
@@ -195,7 +224,7 @@ ALTER TABLE `registration`
 -- AUTO_INCREMENT for table `cake_details`
 --
 ALTER TABLE `cake_details`
-  MODIFY `cakeid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cakeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `customer_order`
 --
@@ -205,7 +234,7 @@ ALTER TABLE `customer_order`
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
