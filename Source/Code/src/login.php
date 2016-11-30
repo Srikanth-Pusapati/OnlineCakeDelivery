@@ -20,7 +20,7 @@
 			private $userEmail;
 			private $password;
 			public $error=''; 
-
+            // redirects according to the user
 			function redirectBrowser($userType){
 			if($userType == 'admin'){
 				$redirectpage= "admin_features.php";
@@ -58,7 +58,7 @@
 
 				}
 			}
-
+            // retrieve the table details of respective users
 			function getTableName($userType){
 
 				if($userType == 'admin'){
@@ -70,11 +70,12 @@
 				}
 				return $table;
 			}
-
+            // retrieving the login details 
 			function setUserLoginDetails($userEmail,$userPassword){
 						$this->setUserEmail($userEmail);
 						$this->setPassword($userPassword);
-					}
+						}
+			// function for checking the logng details
 			function checkLoginDetails(){
 
 				// Variable To Store Error Message	
@@ -88,7 +89,7 @@
 					}
 					else
 					{
-
+						//
 						$con= $this->connectToDatabase();
 
 						$userType=$_POST['userType'];

@@ -7,7 +7,7 @@ class feedback extends Utils{
 	private $suggestMessage;
 	private $worthRating;
 	private $comment;
-
+      // function to load 
 	function __construct($content){
 		$this->loadContent($content);
 	}

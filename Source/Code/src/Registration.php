@@ -57,24 +57,31 @@
 
 			return $userId;
 		}
+		// function for retriving the user name
 		function getUname(){
 			return $this->uname;
 		}
+		// function for retriving  the email of the user
 		function getEmail(){
 			return $this->email;
 		}
+		// function for retriving the address
 		function getAddress(){
 			return $this->address;
 		}
-		function getPassword(){
+		// function for retriving the password
+		function getPassword(){ 
 			return $this->pwd;
 		}
+		// function  for retriving the mobile number
 		function getMobileNumber(){
 			return $this->mobile;
 		}
+		// function for retriving usertype
 		function getUserType(){
 			return $this->u_type;
 		}
+		// function for redirecting  pages based on the user
 		function redirectBrowser($userType){
 			if($userType == 'admin'){
 				$redirectpage= "admin_features.php";
@@ -85,14 +92,14 @@
 			}
 			return $redirectpage;
 		}
-
+			// functiion for updating the respective user details in the session
 		function updateSession(){
 
 			$_SESSION['userEmail']=$this->getEmail();
 			$_SESSION['userID'] = $this->getUserId();
 			$_SESSION['userType'] = $this->getUserType();
 		}
-
+			
 		function executeInsertQuery(){
 			 // Execute sql query to insert registartion data into database	
 			 $conn = $this->connectToDatabase();	
@@ -119,7 +126,7 @@
 		}
 	}
 	$registrationObject = new Registration();
-
+		// after clicking on the submit button  setting the form deatils
 	if(isset($_POST["submit"])){
 		
 

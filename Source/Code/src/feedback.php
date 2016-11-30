@@ -5,7 +5,7 @@
   <link href="css/feedback_styles.css" rel="stylesheet">
 </head>
 <body>
-
+   
   <?php include 'utils.php';
   $utilsObject = new Utils();
   $utilsObject->includeHeader();
@@ -13,14 +13,14 @@
 
 
   <script>
-
+    //validating the form for required fields
     function validform() {
       var rating = document.querySelector('input[id = "UI_rating"]:checked');
       var  cake_availability= document.querySelector('input[id = "cake_available"]:checked');
       var  suggest= document.querySelector('input[id = "suggest"]:checked');
       var   worth= document.querySelector('input[id = "worth"]:checked');
       var comment = document.getElementById("comment").value;
-      
+      //checking if the fields are null
       if (rating==null || cake_availability==null || suggest==null || worth==null)
       {
          alert("Please complete the feedback");  

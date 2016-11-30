@@ -15,7 +15,7 @@ include "utils.php";
 class customerStatus extends Utils
 {
 	private  $error;
-
+	// retriving the status of the customer
 	function retrieveStatus()
 	{
 		$con= $this->connectToDatabase();
@@ -25,7 +25,7 @@ class customerStatus extends Utils
 		$result = $con->query( $sql);
 		if ($result->num_rows > 0) 
 		{
-			echo "<table id=\"customerStatus\"> <tbody> 
+				echo "<table id=\"customerStatus\"> <tbody> 
 					<tr>
 					<th>Order Status</th>
 					<th>Date Of Delivery</th>
@@ -44,6 +44,7 @@ class customerStatus extends Utils
 		}
 
 	}
+	// function for printing the details of the customer
 	function printResults($row){
 		echo "<tr><td>".$row["order_status"]."</td><td>".$row["date_of_delivery"]."</td><td>".$row["time_of_delivery"]."</td></tr>";							 
 	}	  
