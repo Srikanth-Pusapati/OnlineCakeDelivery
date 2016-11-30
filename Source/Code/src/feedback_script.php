@@ -1,5 +1,6 @@
 <?php
 include "utils.php";
+// feedback class for storing the feedback
 class feedback extends Utils{
 
 	private $uiRating;
@@ -11,6 +12,7 @@ class feedback extends Utils{
 	function __construct($content){
 		$this->loadContent($content);
 	}
+	 
 	function loadContent($content){
 		//variable UI_rating is initialized to data given from the form feild 
 		$this->uiRating = $content['UI_rating'];
@@ -23,6 +25,7 @@ class feedback extends Utils{
 		//variable comment is initialized to data given from the form feild 
 		$this->comment = $content['comment'];
 	}
+		//saving the feedback in the database
 	function uploadFeedback(){
 		$conn = $this->connectToDatabase();
 
