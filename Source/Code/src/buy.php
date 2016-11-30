@@ -1,6 +1,7 @@
 <?php
 // includes the header file
 include "utils.php";
+//this class contains all functions used to validate and store checkout details in database
 class customerDeliveryDetails extends Utils
 {	
         
@@ -13,7 +14,7 @@ class customerDeliveryDetails extends Utils
 	 private  $address;
 	 private  $zip;
 	 private $errorMessage="";
-	 
+	 //this function is used to set order details
 	 function setDetails($OrderDetails){
 		 
 	//declaring a variable date_Of_Delivery for retrieving the customer cake delivery date.
@@ -33,7 +34,7 @@ class customerDeliveryDetails extends Utils
 	//declaring a variable zip for retrieving the customer zip.
 	$this->zip=$OrderDetails['zip'];
 	 }
-	
+	//this function is used to insert newly created order into order table
 	function retriveAddressDetails($con)
 	{
 		
@@ -103,6 +104,7 @@ class customerDeliveryDetails extends Utils
 	
 
 	}
+	// this function is used to validate phone number
 	 function validation_phonenumber($phone_number)
 	 {
 	 //validating the phone number
@@ -113,13 +115,14 @@ class customerDeliveryDetails extends Utils
      }
 		 return true;
 	}
+	// this function is used to redirect feedback page
 	 function redirect()
 	  {
 		//redirect to feedback page when place order button is clicked
 	  header("location: feedback.php");
       }
 	  
-	  
+	  // this function is used to validate date of delivery
 	  function checkDateofDelievery($dateOfDelivery)
 	  {
 		  echo "inside 1";

@@ -5,6 +5,7 @@
 </head>
 <?php 
 include 'utils.php';
+//this class contains all functions for a logged in customer like viewing cakes to purchase
 class Customer extends Utils{
 
 	private $cakeId;
@@ -53,7 +54,7 @@ class Customer extends Utils{
 	public function getCakeImage(){
 		return $this->cakeImage;
 	}
-
+	// this function is used to rretreive all cakes from database
 	function loadCakes(){
 
 		$con = $this->connectToDatabase();
@@ -84,6 +85,7 @@ class Customer extends Utils{
 		}
 
 	}
+	//this function is used to display details of each cake like cakedetails, order now button details
 	function loadContentToPrint(){
 		return "<li id=\"content\">
 		<figure>

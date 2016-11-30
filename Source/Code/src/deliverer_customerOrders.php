@@ -14,9 +14,11 @@ $utils->includeHeader();
 <body>
 <h2 style="text-align: center;">Customer Orders</h2>
 	<?php
+	//this class contains all functions to display orders which are not yet cofirmed
 	class Customer_Orders extends Utils
 	{
 		
+		// this function returns all pending orders
 		function pending_Orders($con)
 		{
 			// Retreiving all orders having order_staus as "pending"
@@ -25,6 +27,7 @@ $utils->includeHeader();
 			$result = $con->query ( $stmt1 );
 			return $result;
 		}
+		// this function print all pending orders
 		function printContent($result){
 
 			if ($result->num_rows > 0) {
@@ -71,6 +74,7 @@ $utils->includeHeader();
 
 		}
 	}
+	// creating object for Customer_Orders
 	$orders_object = new Customer_Orders;
 	$connection_object= $orders_object -> connectToDatabase();
 	$result=$orders_object -> pending_Orders($connection_object);
