@@ -9,7 +9,7 @@ class DelivererOrdersTest extends PHPUnit_Framework_TestCase
 	{
 		$obj= new SelectedOrder();
 		$conn = $obj->connectToDatabase();
-		$deliverer_id=3;
+		$deliverer_id=2;
 		$result= $obj -> confirmedOrderResults($deliverer_id,$conn);
 		$this->assertGreaterThan(0,$result -> num_rows);
 	}
