@@ -14,43 +14,53 @@ class Customer extends Utils{
 	private $cakeIngredients;
 	private $cakeCost;
 	private $cakeImage;
-
-
+    
+		// setting the cakeid
 	public function setCakeId($cakeId){
 		$this->cakeId = $cakeId;
 	}
+		// setting the cake name
 	public function setCakeName($cakeName){
 		$this->cakeName = $cakeName;
 	}
+	 // settig the cake details
 	public function setCakeDetails($cakeDetails){
 		$this->cakeDetails = $cakeDetails;
 	}
+		// setting the cake ingredients
 	public function setCakeIngredients($cakeIngredients){
 		$this->cakeIngredients = $cakeIngredients;
 	}
+		// setting the cake cost
 	public function setCakeCost($cakeCost){
 		$this->cakeCost = $cakeCost;
 	}
+		// setting the cake image
 	public function setCakeImage($cakeImage){
 		$this->cakeImage = $cakeImage;
 	}
 
-
+	// retriving the getting cake id
 	public function getCakeId(){
 		return $this->cakeId;
 	}
+	// retriving the cake name
 	public function getCakeName(){
 		return $this->cakeName;
 	}
+	 // retriving the cake deatils
 	public function getCakeDetails(){
 		return $this->cakeDetails;
 	}
+	 // retriving the cake  inngredients
 	public function getCakeIngredients(){
 		return $this->cakeIngredients ;
 	}
+		// retriving the cake cost
 	public function getCakeCost(){
 		return $this->cakeCost;
 	}
+	 // retriving the  cake image 
 	public function getCakeImage(){
 		return $this->cakeImage;
 	}

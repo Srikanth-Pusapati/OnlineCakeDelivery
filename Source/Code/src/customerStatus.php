@@ -12,6 +12,7 @@
 <?php
 // includes the header file
 include "utils.php";
+// class for retriving the customer status
 class customerStatus extends Utils
 {
 	private  $error;

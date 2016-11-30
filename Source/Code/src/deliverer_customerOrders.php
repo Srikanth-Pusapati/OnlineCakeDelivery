@@ -14,7 +14,7 @@ $utils->includeHeader();
 <body>
 <h2 style="text-align: center;">Customer Orders</h2>
 	<?php
-	//this class contains all functions to display orders which are not yet cofirmed
+	//this class contains all functions to display orders which are not yet cofirmed to the deliverer
 	class Customer_Orders extends Utils
 	{
 		
