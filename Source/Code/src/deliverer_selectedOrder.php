@@ -12,10 +12,10 @@ include "utils.php";
 <body>
 
 	<?php
-	class SelectedOrder extends Utils{
+	// this class contains all functions to display all orders that specific deliverer should deliver
+class SelectedOrder extends Utils{
 // getting deliverid from sesssion
-	  
-
+// this function is used to update order status
 function updateSelectedOrder($deliverer_id, $conn){
 	//getting orderid from "deliverer_customerOrders.php" page
 	$selected_orderid= (int)$_POST["orderid"];
@@ -25,7 +25,7 @@ function updateSelectedOrder($deliverer_id, $conn){
 	$stmt2->bind_param("ii", $deliverer_id,$selected_orderid);
 	$stmt2->execute();
 }
-
+//this function is used to retreive all orders that specific deliverer should deliver
 function confirmedOrderResults($deliverer_id, $conn){
 
 // This query is used to display all orders that logged deliverer has to deliverer
@@ -38,6 +38,7 @@ $stmt1->execute();
 $result = $stmt1->get_result();
 return $result;
 }
+//this function is used to display all orders that specific deliverer should deliver
 public function printResults($result){
 // this condition is used to check whether there are any orders that logined deliverer has to deliverer
 if ($result->num_rows > 0) {
