@@ -1,0 +1,85 @@
+#upload_button{
+	border: 2px solid green;
+	background-color: green;
+	color: white;
+	padding:5px 20px;
+	margin: 16px;
+}
+tr td{
+	padding:5px;
+	margin:5px 10px;
+}
+table {
+	padding:10px;
+	margin: auto;
+}
+
+#tabs a {
+	width: 40%;
+}
+
+#tabs a li {
+
+	display: inline-block;
+	width: 30%;
+	padding: 10px 20px;
+	margin: 10px 20px;
+	background-color:#eee;
+} 
+
+#tabs a li:hover,
+#tabs a li:active{
+	background-color: red;
+	color: white;
+}
+
+#totabl {
+	display:none;
+}
+
+#content div {
+	padding: 20px;
+	float: left;
+}
+
+#totab2 {
+	display:none;
+}
+
+#litotab1.selected {
+	background-color:red;
+	color: white;
+	border: 20px solid blanchedalmond;
+}
+
+
+#litotab2.selected {
+	background-color:red;
+	color: white;
+	border: 20px solid blanchedalmond
+}
+
+.errorMessage{
+	color: red;
+}
+
+#adminUpdate{
+	vertical-align: top;
+}
+
+#feedbackId{
+	padding: 10px 20px;
+	margin: 10px;
+	border : 2px solid black;
+	display: inline-block;
+	width: 100;
+}
+
+#feedbackId tbody tr{
+	vertical-align: top;
+}
+
+#feedbackId tbody tr td{
+	padding-right: 20px;
+}
+
